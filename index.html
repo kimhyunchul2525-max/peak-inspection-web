@@ -29,6 +29,19 @@
 /* Keep focused fields at iOS's non-zooming size in both orientations. */
 @media (pointer:coarse){html body input,html body select,html body textarea{font-size:16px!important}}
 @media (max-height:500px) and (orientation:landscape){html body input,html body select,html body textarea{font-size:16px!important}}
+/* Long Code 128 labels need the full uncropped camera frame and a wide guide. */
+#cameraDialog{max-width:960px;max-height:calc(100dvh - 24px);overflow:auto}
+#cameraDialog .camera-instruction{font-weight:700;color:#264158;margin:12px 0 9px}
+.camera-preview{position:relative;min-width:0;border-radius:8px;background:#0b1e2c;overflow:hidden}
+#cameraDialog #cameraVideo{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;max-height:58dvh;border-radius:0}
+#cameraGuide{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:32%;aspect-ratio:1;border:2px solid #6cebc4;border-radius:10px;box-shadow:0 0 0 1px #132a4570;pointer-events:none}
+#cameraDialog[data-scan-mode="barcode"] #cameraGuide{width:92%;height:32%;aspect-ratio:auto;border-radius:5px}
+#cameraDialog .camera-tip{margin:11px 0 8px;color:#526c83;line-height:1.6}
+#cameraStatus{min-height:1.5em;margin:8px 0 12px;overflow-wrap:anywhere}
+.camera-actions{display:flex;gap:10px}
+.camera-actions .button{flex:1;white-space:normal;min-height:46px;text-align:center}
+@media(max-width:580px){#cameraDialog{width:calc(100% - 16px);padding:14px}#cameraDialog #cameraVideo{max-height:45dvh;aspect-ratio:16/9}#cameraDialog .camera-tip{font-size:12px}.camera-actions{gap:8px}.camera-actions .button{padding:9px;font-size:13px}}
+@media(max-height:600px) and (orientation:landscape){#cameraDialog[open]{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(200px,1fr);gap:0 14px;padding:12px 16px;max-height:calc(100dvh - 16px)}#cameraDialog .dialog-heading{grid-column:1/-1}#cameraDialog .dialog-heading h2{font-size:16px}#cameraDialog .camera-instruction{grid-column:1/-1;margin:4px 0 7px;font-size:12px}#cameraDialog #cameraVideo{max-height:calc(100dvh - 106px);aspect-ratio:16/9}#cameraDialog .camera-controls{align-self:center;min-width:0}#cameraDialog .camera-tip{font-size:11px;margin:0 0 6px}#cameraDialog #cameraStatus{font-size:11px;margin:6px 0 9px}#cameraDialog .camera-actions{flex-direction:column;gap:7px}#cameraDialog .camera-actions .button{min-height:40px;font-size:12px;padding:8px}}
 
 .parts-total{font-size:13px;color:#487399;background:#eaf2fa;border:1px solid #d9e6f3;padding:10px 15px;border-radius:7px;white-space:nowrap}.parts-toolbar{padding:22px 24px 12px;display:flex;align-items:center;justify-content:space-between;gap:18px}.parts-toolbar h2{margin:0 0 7px;font-size:17px}.parts-toolbar .help{margin:0}.parts-actions{display:flex;gap:10px;flex-wrap:wrap}.parts-format-help{font-size:12px;line-height:1.7;color:#72869c;padding:0 24px 20px;margin:0}.parts-grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:22px;margin-top:22px;align-items:start}.parts-form{display:flex;flex-direction:column;gap:18px}.parts-form label{display:block;margin-bottom:8px}.parts-form input{width:100%}.parts-form input[readonly]{background:#f0f4f8;color:#7890a5}.parts-form .help{margin:0}.parts-form .notice{margin:0}.parts-searchbar{padding:22px 22px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.parts-searchbar label{font-size:13px;flex-basis:100%}.parts-searchbar input{flex:1;min-width:140px}.parts-searchbar .subtle{font-size:11px}.parts-table-wrap{overflow-x:auto}.parts-table-wrap table{width:100%;min-width:520px}.parts-table-wrap td{font-size:12px;vertical-align:top}.parts-table-wrap .parts-pn{white-space:nowrap;font-weight:600;color:#345b80}.parts-table-wrap .parts-desc{white-space:normal;min-width:150px;overflow-wrap:anywhere;line-height:1.6}.parts-empty{text-align:center;padding:36px!important;color:#7c8fa1}.parts-more{display:block;margin:17px auto}.parts-preview{margin:0 24px 24px;padding:20px;border:1px solid #d6e4f1;border-radius:8px;background:#f8fbff}.parts-preview h3{margin:0 0 14px;font-size:14px;overflow-wrap:anywhere}.parts-preview-counts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.parts-preview-counts>div{display:flex;align-items:baseline;gap:7px;background:#fff;border:1px solid #dce6ee;border-radius:7px;padding:12px}.parts-preview-counts strong{font-size:22px;color:#286da8}.parts-preview-counts span{font-size:12px;color:#6f8295}.parts-preview .help{line-height:1.6}.parts-changes{padding:0;list-style:none;margin:18px 0}.parts-changes li{display:grid;grid-template-columns:minmax(130px,1fr) 2fr;gap:5px 14px;padding:10px 0;border-top:1px solid #e3ebf4;font-size:12px;overflow-wrap:anywhere}.parts-changes small{grid-column:2;color:#8392a3;font-size:11px}.parts-changes li>strong{color:#3c617e}.parts-preview .parts-actions{margin-top:20px}#partsMessage{margin:0 24px 20px}#partsReload{margin:-6px 0 18px}#partsView>.history-note{line-height:1.8}#partsStorageError{margin-bottom:15px}
 @media(max-width:1150px){.parts-grid{grid-template-columns:260px minmax(0,1fr);gap:16px}.parts-toolbar{align-items:flex-start;flex-direction:column}.parts-searchbar{padding:18px}.parts-table-wrap th,.parts-table-wrap td{padding-left:14px;padding-right:14px}}
@@ -151,7 +164,17 @@ footer{flex-wrap:wrap;gap:12px}.public-links{display:flex;flex-wrap:wrap;gap:6px
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
-  <dialog id="cameraDialog"><div class="dialog-heading"><h2><span data-i18n="로트 카드 스캔">로트 카드 스캔</span></h2><button id="closeCamera" class="icon-button" type="button" aria-label="카메라 닫기" data-i18n-aria-label="카메라 닫기">×</button></div><p><span data-i18n="가운데 QR을 먼저 비춘 뒤 하단 바코드를 비춰 주세요.">가운데 QR을 먼저 비춘 뒤 하단 바코드를 비춰 주세요.</span></p><video id="cameraVideo" muted playsinline></video><p id="cameraStatus" role="status"><span data-i18n="카메라를 준비하고 있습니다.">카메라를 준비하고 있습니다.</span></p><button id="finishCamera" class="button primary" type="button"><span data-i18n="스캔 마치기">스캔 마치기</span></button></dialog>
+  <dialog id="cameraDialog" data-scan-mode="qr" aria-labelledby="cameraTitle">
+    <div class="dialog-heading"><h2 id="cameraTitle"><span data-i18n="로트 카드 스캔">로트 카드 스캔</span></h2><button id="closeCamera" class="icon-button" type="button" aria-label="카메라 닫기" data-i18n-aria-label="카메라 닫기">×</button></div>
+    <p id="cameraInstruction" class="camera-instruction"></p>
+    <div class="camera-preview"><video id="cameraVideo" muted playsinline></video><div id="cameraGuide" aria-hidden="true"></div></div>
+    <div class="camera-controls">
+      <p id="cameraHelp" class="camera-tip"></p>
+      <p id="cameraStatus" role="status"><span data-i18n="카메라를 준비하고 있습니다.">카메라를 준비하고 있습니다.</span></p>
+      <div class="camera-actions"><button id="captureBarcodeButton" class="button secondary" type="button" disabled><span data-i18n="바코드 사진 촬영">바코드 사진 촬영</span></button><button id="finishCamera" class="button primary" type="button"><span data-i18n="스캔 마치기">스캔 마치기</span></button></div>
+    </div>
+  </dialog>
+  <input id="barcodeCaptureInput" type="file" accept="image/*" capture="environment" hidden>
   <dialog id="detailDialog"><div class="dialog-heading"><h2><span data-i18n="등록 상세">등록 상세</span></h2><button id="closeDetail" class="icon-button" type="button" aria-label="상세 닫기" data-i18n-aria-label="상세 닫기">×</button></div><dl id="recordDetails"></dl></dialog>
   <dialog id="resolutionDialog">
     <div class="dialog-heading"><h2 id="resolutionTitle"><span data-i18n="재검사 결과 등록">재검사 결과 등록</span></h2><button id="closeResolution" class="icon-button" type="button" aria-label="재검사 닫기" data-i18n-aria-label="재검사 닫기">×</button></div>
@@ -977,6 +1000,14 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
 (function (I) {
   'use strict';
   const rows = [
+    ['바코드 사진 촬영','Take barcode photo','拍攝條碼照片','Chụp ảnh mã vạch','Ambil foto kode batang'],
+    ['촬영한 사진에서 하단 바코드를 읽고 있습니다…','Reading the bottom barcode from your photo…','正在從照片讀取下方條碼…','Đang đọc mã vạch phía dưới từ ảnh đã chụp…','Membaca kode batang bawah dari foto…'],
+    ['하단 바코드를 읽지 못했습니다. 바코드 양 끝과 흰 여백이 모두 보이도록 가로로 선명하게 다시 촬영해 주세요.','The bottom barcode could not be read. Take another sharp landscape photo showing both ends and the white margins.','無法讀取下方條碼。請橫向重新拍攝清晰照片，完整包含條碼兩端及白色留白。','Không đọc được mã vạch phía dưới. Chụp lại ảnh ngang, rõ nét, lấy đủ hai đầu mã vạch và khoảng trắng.','Kode batang bawah tidak terbaca. Ambil ulang foto lanskap yang tajam dengan kedua ujung dan area putih terlihat.'],
+    ['기존 바코드와 다른 값입니다. 현재 입력은 유지했습니다. 같은 카드인지 확인해 주세요.','This barcode differs from the current one. Your entries were kept. Check that it is the same card.','此條碼與目前的條碼不同，已保留現有輸入。請確認是否為同一張卡片。','Mã vạch này khác mã hiện tại. Dữ liệu đã nhập được giữ nguyên. Kiểm tra xem có đúng cùng một thẻ không.','Kode batang ini berbeda dari yang ada. Isian Anda dipertahankan. Pastikan kartunya sama.'],
+    ['2단계 · 하단의 긴 바코드','Step 2 · Long bottom barcode','步驟 2 · 下方長條碼','Bước 2 · Mã vạch dài phía dưới','Langkah 2 · Kode batang panjang di bawah'],
+    ['1단계 · 가운데 QR 코드','Step 1 · Center QR code','步驟 1 · 中央 QR Code','Bước 1 · Mã QR ở giữa','Langkah 1 · Kode QR tengah'],
+    ['아이폰을 가로로 돌리고 바코드 양 끝과 흰 여백을 모두 담아 주세요. 너무 가까이 대지 말고 초점이 선명해질 때까지 잠시 멈추세요. 읽히지 않으면 바코드 사진 촬영을 눌러 주세요.','Turn your iPhone sideways and include both ends of the barcode and the white margins. Keep some distance and hold still until focused. If it does not scan, tap Take barcode photo.','請將 iPhone 橫放，完整拍入條碼兩端及白色留白。保持適當距離，停穩等待對焦清晰。若仍無法辨識，請點選「拍攝條碼照片」。','Xoay ngang iPhone, lấy đủ hai đầu mã vạch và khoảng trắng. Giữ khoảng cách vừa đủ và giữ yên đến khi lấy nét. Nếu không quét được, nhấn Chụp ảnh mã vạch.','Putar iPhone mendatar dan sertakan kedua ujung kode batang beserta area putih. Jaga jarak dan tahan hingga fokus tajam. Jika belum terbaca, ketuk Ambil foto kode batang.'],
+    ['가운데 QR 전체를 안내선 안에 맞춰 주세요. 인식하면 하단 바코드 스캔으로 자동 전환됩니다.','Fit the entire center QR code inside the guide. After it is read, scanning switches to the bottom barcode.','請將中央 QR Code 完整放入框內。辨識後會自動切換至下方條碼掃描。','Đặt toàn bộ mã QR ở giữa vào khung. Sau khi đọc được, ứng dụng tự chuyển sang quét mã vạch phía dưới.','Tempatkan seluruh kode QR tengah di dalam bingkai. Setelah terbaca, pemindaian beralih ke kode batang bawah.'],
     ['등록된 품번이 없습니다. 품번 관리 → Excel 업로드에서 품번과 Description을 가져오거나 직접 추가해 주세요.','No parts are registered. Go to Parts management → Upload Excel to import part numbers and descriptions, or add them manually.','尚未登錄料號。請至料號管理 → 上傳 Excel 匯入料號與品名說明，或手動新增。','Chưa có mã linh kiện. Vào Quản lý mã linh kiện → Tải lên Excel để nhập mã và mô tả, hoặc thêm thủ công.','Belum ada komponen. Buka Kelola nomor komponen → Unggah Excel untuk mengimpor nomor dan deskripsi komponen, atau tambahkan secara manual.'],
     ['250MB 이하의 백업 파일을 선택해 주세요.','Select a backup file no larger than 250 MB.','請選擇不超過 250 MB 的備份檔案。','Chọn tệp sao lưu không lớn hơn 250 MB.','Pilih berkas cadangan maksimal 250 MB.'],
     ['{pn} · 로트 {lot} · {process}\n불량: {defect}\n불량 수량 {quantity} PCS 전체에 결과를 적용합니다.','{pn} · Lot {lot} · {process}\nDefect: {defect}\nThe result applies to all {quantity} PCS of this defect.','{pn} · 批次 {lot} · {process}\n不良：{defect}\n結果將套用至此筆不良的全部 {quantity} PCS。','{pn} · Lô {lot} · {process}\nLỗi: {defect}\nKết quả áp dụng cho toàn bộ {quantity} PCS lỗi này.','{pn} · Lot {lot} · {process}\nCacat: {defect}\nHasil berlaku untuk seluruh {quantity} PCS cacat ini.'],
@@ -1691,22 +1722,38 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     return { text: result.getText(), format: z.BarcodeFormat[result.getBarcodeFormat()] || 'UNKNOWN' };
   }
 
-  function crop(source, region, maxSide, threshold) {
-    const sourceWidth = source.width || source.naturalWidth;
-    const sourceHeight = source.height || source.naturalHeight;
+  // ZXing's bundled DecodeHintType.TRY_HARDER is 3. It is not re-exported by
+  // @zxing/browser; this hint expands the scan rows for very thin lot-card bars.
+  const TRY_HARDER = 3;
+  function code128Reader() {
+    const z = library();
+    const reader = new z.BrowserMultiFormatReader(new Map([[TRY_HARDER, true]]));
+    reader.possibleFormats = [z.BarcodeFormat.CODE_128];
+    return reader;
+  }
+
+  function crop(source, region, maxSide, threshold, rotation = 0) {
+    const sourceWidth = source.videoWidth || source.naturalWidth || source.width;
+    const sourceHeight = source.videoHeight || source.naturalHeight || source.height;
     const [rx, ry, rw, rh] = region;
     const width = sourceWidth * rw;
     const height = sourceHeight * rh;
     const scale = Math.min(1, maxSide / Math.max(width, height));
     const border = 24;
     const canvas = document.createElement('canvas');
-    canvas.width = Math.max(1, Math.round(width * scale)) + border * 2;
-    canvas.height = Math.max(1, Math.round(height * scale)) + border * 2;
+    const drawnWidth = Math.max(1, Math.round(width * scale));
+    const drawnHeight = Math.max(1, Math.round(height * scale));
+    canvas.width = (rotation ? drawnHeight : drawnWidth) + border * 2;
+    canvas.height = (rotation ? drawnWidth : drawnHeight) + border * 2;
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    if (rotation) { ctx.translate(border + drawnHeight, border); ctx.rotate(Math.PI / 2); }
+    else ctx.translate(border, border);
     ctx.drawImage(source, sourceWidth * rx, sourceHeight * ry, width, height,
-      border, border, canvas.width - border * 2, canvas.height - border * 2);
+      0, 0, drawnWidth, drawnHeight);
+    ctx.restore();
     if (threshold) {
       const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < frame.data.length; i += 4) {
@@ -1718,6 +1765,25 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     }
     return canvas;
   }
+
+  function readRegion(reader, source, region, maxSide, threshold = 0, rotation = 0) {
+    const canvas = crop(source, region, maxSide, threshold, rotation);
+    try { return reader.decodeFromCanvas(canvas); }
+    finally { canvas.width = canvas.height = 1; }
+  }
+
+  // Scan the entire width of each band. Never crop off the ends of Code 128.
+  // Rotated bands cover a card held vertically without asking iOS to rotate video.
+  const barcodeRegions = [
+    { region: [0, 0.32, 1, 0.36] },
+    { region: [0, 0.74, 1, 0.26] },
+    { region: [0, 0, 1, 0.32] },
+    { region: [0, 0, 1, 1] },
+    { region: [0.32, 0, 0.36, 1], rotation: 90 },
+    { region: [0.74, 0, 0.26, 1], rotation: 90 },
+    { region: [0, 0, 0.32, 1], rotation: 90 },
+    { region: [0, 0, 1, 1], rotation: 90 }
+  ];
 
   async function loadImage(file) {
     if (!(file instanceof Blob)) throw new Error(t('사진 파일을 선택해 주세요.'));
@@ -1737,21 +1803,28 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
   }
 
   /** Returns every distinct decoded value; an empty array means no readable code. */
-  async function scanImage(file) {
+  async function scanImage(file, options = {}) {
     const z = library();
     const image = await loadImage(file);
     const qr = new z.BrowserQRCodeReader();
-    const barcode = new z.BrowserMultiFormatOneDReader();
+    const barcode = code128Reader();
     const found = new Map();
     const add = result => {
       const item = output(result);
       found.set(item.format + ':' + item.text, item);
     };
-    const attempt = (reader, region, maxSide, threshold) => {
-      const canvas = crop(image, region, maxSide, threshold);
-      try { add(reader.decodeFromCanvas(canvas)); } catch (_) { /* Try another region. */ }
-      canvas.width = canvas.height = 1;
+    const attempt = (reader, region, maxSide, threshold, rotation = 0) => {
+      try { add(readRegion(reader, image, region, maxSide, threshold, rotation)); } catch (_) { /* Try another region. */ }
     };
+
+    // Native camera photos retain detail that a portrait video stream may lose.
+    for (const { region, rotation } of barcodeRegions) {
+      attempt(barcode, region, 5000, 0, rotation);
+      if ([...found.values()].some(item => item.format === 'CODE_128')) break;
+      attempt(barcode, region, 5000, 140, rotation);
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    if (options.mode === 'barcode') return [...found.values()];
 
     // Separate readers prevent a large 1D symbol from hiding the center QR.
     // Regions also handle a complete landscape lot card with thin lower bars.
@@ -1769,10 +1842,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
       [0.4, 0.4, 0.6, 0.6]
     ];
     for (const region of regions) {
-      attempt(barcode, region, 4000, 0);
-      if (region[0] > 0.6 && region[1] < 0.1) {
-        for (const threshold of [100, 140]) attempt(barcode, region, 4000, threshold);
-      }
+      if (![...found.values()].some(item => item.format === 'CODE_128')) attempt(barcode, region, 5000, 0);
       if (![...found.values()].some(item => item.format === 'QR_CODE')) {
         attempt(qr, region, 2000, 0);
         // Dark ink on colored stock often needs a simpler threshold than the
@@ -1791,7 +1861,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
   }
 
   /** Starts camera capture. Callback receives {text, format}; call returned stop(). */
-  async function start(video, onResult) {
+  async function start(video, onResult, options = {}) {
     const z = library();
     if (global.isSecureContext === false) {
       throw new Error(t('카메라를 사용하려면 HTTPS 주소로 접속해 주세요. 아이폰에서는 PC의 localhost 주소에 접속할 수 없습니다.'));
@@ -1808,12 +1878,24 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
-    const reader = new z.BrowserMultiFormatReader(new Map(), {
-      delayBetweenScanAttempts: 200,
+    const reader = new z.BrowserMultiFormatReader(new Map([[TRY_HARDER, true]]), {
+      delayBetweenScanAttempts: 220,
       delayBetweenScanSuccess: 500,
       tryPlayVideoTimeout: 10000
     });
-    reader.possibleFormats = [z.BarcodeFormat.CODE_128, z.BarcodeFormat.CODE_39, z.BarcodeFormat.QR_CODE];
+    const barcode = code128Reader();
+    const qr = new z.BrowserQRCodeReader();
+    let attemptNumber = 0;
+    // The library's capture loop invokes decode(). Override only frame decoding
+    // so its permission handling, playback, cancellation and lifecycle remain intact.
+    reader.decode = source => {
+      if (options.getMode?.() !== 'barcode') return readRegion(qr, source, [0, 0, 1, 1], 1800);
+      const pass = attemptNumber++;
+      // Keep the central guide responsive, then sweep other/rotated bands.
+      try { return readRegion(barcode, source, barcodeRegions[0].region, 3840); } catch (_) { /* Sweep next. */ }
+      const job = barcodeRegions[1 + (pass % (barcodeRegions.length - 1))];
+      return readRegion(barcode, source, job.region, 3840, pass % 14 >= 7 ? 140 : 0, job.rotation);
+    };
     let stopped = false;
     const recent = new Map();
     const receive = result => {
@@ -1830,7 +1912,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
       try {
         controls = await reader.decodeFromConstraints({
           audio: false,
-          video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1080 } }
+          video: { facingMode: { ideal: 'environment' }, width: { ideal: 3840 }, height: { ideal: 2160 }, frameRate: { ideal: 24, max: 30 } }
         }, video, receive);
       } catch (error) {
         // Older camera implementations may reject resolution preferences.
@@ -3041,6 +3123,7 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
   let saving = false;
   let stopCamera = null;
   let cameraSession = 0;
+  let cardPhotoBusy = false;
   let toastTimer;
   let resolutionTarget = null;
   let resolutionSaving = false;
@@ -3160,6 +3243,7 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
     $('mismatchNotice').hidden = !mismatch();
     $('mismatchCheckLabel').hidden = !mismatch();
     updateSaveButton();
+    updateCameraGuide();
   }
   function resetEntry(focus = true) {
     entryRevision++;
@@ -3545,20 +3629,37 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
   });
 
   $('photoButton').addEventListener('click', () => $('photoInput').click());
-  $('photoInput').addEventListener('change', async () => {
-    const file = $('photoInput').files[0]; if (!file) return;
+  async function readCardPhoto(input, { barcodeOnly = false } = {}) {
+    const file = input.files[0];
+    if (!file || cardPhotoBusy) return;
+    if (barcodeOnly && !scanIsCurrent('lot')) {
+      notice('scanMessage', t('먼저 첫 번째 입력란에서 가운데 QR 코드를 인식해 주세요.'), 'error');
+      input.value = ''; return;
+    }
     const photoRevision = entryRevision;
-    const scannedAt = new Date().toISOString(); $('photoButton').disabled = true;
-    notice('scanMessage', t('카드 사진에서 바코드와 QR을 읽고 있습니다…'));
+    const scannedAt = new Date().toISOString();
+    cardPhotoBusy = true;
+    $('photoButton').disabled = true;
+    $('cameraButton').disabled = true;
+    updateCameraGuide();
+    notice('scanMessage', t(barcodeOnly ? '촬영한 사진에서 하단 바코드를 읽고 있습니다…' : '카드 사진에서 바코드와 QR을 읽고 있습니다…'));
     try {
       if (file.size > 30000000) throw new Error(t('30MB 이하의 카드 사진을 선택해 주세요.'));
-      const results = await window.LotScanner.scanImage(file);
+      const results = await window.LotScanner.scanImage(file, barcodeOnly ? { mode: 'barcode' } : {});
       if (entryRevision !== photoRevision) {
         notice('scanMessage', t('사진을 읽는 동안 입력이 변경되어 사진 결과를 적용하지 않았습니다. 필요한 카드를 다시 선택해 주세요.'));
         return;
       }
       const parsed = results.flatMap((result) => { try { return [C.parseScan(result.text)]; } catch { return []; } });
-      const barcode = parsed.find((p) => p.type === 'barcode'); const lot = parsed.find((p) => p.type === 'lot');
+      const barcode = parsed.find((p) => p.type === 'barcode');
+      if (barcodeOnly) {
+        // Native capture supplements the current lot; it never replaces a card or its defect photos.
+        if (!barcode) throw new Error(t('하단 바코드를 읽지 못했습니다. 바코드 양 끝과 흰 여백이 모두 보이도록 가로로 선명하게 다시 촬영해 주세요.'));
+        if (state.barcode && barcode.value.raw !== state.barcode.raw) throw new Error(t('기존 바코드와 다른 값입니다. 현재 입력은 유지했습니다. 같은 카드인지 확인해 주세요.'));
+        applyParsed(barcode, scannedAt);
+        return;
+      }
+      const lot = parsed.find((p) => p.type === 'lot');
       if (!barcode && !lot) throw new Error(t('하단 바코드나 가운데 QR을 읽지 못했습니다. 밝고 선명하게 촬영하거나 스캐너로 입력해 주세요.'));
       // Replacing a complete card is a single transaction, avoiding mixed old/new codes.
       if ((barcode && state.barcode && barcode.value.raw !== state.barcode.raw) || (lot && state.lot && lot.value.raw !== state.lot.raw)) {
@@ -3568,8 +3669,37 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
       if (lot) applyParsed(lot, scannedAt);
       if (barcode) applyParsed(barcode, scannedAt);
     } catch (error) { notice('scanMessage', error.message, 'error'); }
-    finally { $('photoButton').disabled = false; $('photoInput').value = ''; }
+    finally {
+      cardPhotoBusy = false;
+      $('photoButton').disabled = false;
+      $('cameraButton').disabled = false;
+      input.value = '';
+      updateCameraGuide();
+    }
+  }
+  $('photoInput').addEventListener('change', () => readCardPhoto($('photoInput')));
+  $('barcodeCaptureInput').addEventListener('change', () => readCardPhoto($('barcodeCaptureInput'), { barcodeOnly: true }));
+  $('captureBarcodeButton').addEventListener('click', () => {
+    if (cardPhotoBusy || !scanIsCurrent('lot')) return;
+    // Keep stop/close/click synchronous so iOS retains the user's camera-picker gesture.
+    endCamera();
+    $('cameraDialog').close();
+    $('barcodeCaptureInput').click();
   });
+  function cameraMode() { return scanIsCurrent('lot') ? 'barcode' : 'qr'; }
+  function updateCameraGuide() {
+    const mode = cameraMode();
+    $('cameraDialog').dataset.scanMode = mode;
+    $('cameraInstruction').textContent = t(mode === 'barcode' ? '2단계 · 하단의 긴 바코드' : '1단계 · 가운데 QR 코드');
+    $('cameraHelp').textContent = t(mode === 'barcode'
+      ? '아이폰을 가로로 돌리고 바코드 양 끝과 흰 여백을 모두 담아 주세요. 너무 가까이 대지 말고 초점이 선명해질 때까지 잠시 멈추세요. 읽히지 않으면 바코드 사진 촬영을 눌러 주세요.'
+      : '가운데 QR 전체를 안내선 안에 맞춰 주세요. 인식하면 하단 바코드 스캔으로 자동 전환됩니다.');
+    $('captureBarcodeButton').disabled = mode !== 'barcode' || cardPhotoBusy;
+  }
+  function cameraStatus(message) {
+    $('cameraStatus').textContent = message;
+    activeMessages.set('cameraStatus', message);
+  }
   function endCamera() {
     cameraSession++;
     if (stopCamera) { stopCamera(); stopCamera = null; }
@@ -3579,22 +3709,23 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
   }
   $('cameraButton').addEventListener('click', async () => {
     const session = ++cameraSession;
-    $('cameraDialog').showModal(); $('cameraStatus').textContent = t('카메라 사용을 허용해 주세요.');
+    updateCameraGuide();
+    $('cameraDialog').showModal(); cameraStatus(t('카메라 사용을 허용해 주세요.'));
     try {
       const stop = await window.LotScanner.start($('cameraVideo'), (result) => {
         if (session !== cameraSession) return;
         try {
           const parsed = C.parseScan(result.text);
           if (state[parsed.type]?.raw === parsed.value.raw) return;
-          if (parsed.type === 'barcode' && !scanIsCurrent('lot')) { $('cameraStatus').textContent = t('먼저 가운데 QR을 비춰 주세요. QR 인식 후 하단 바코드를 읽습니다.'); return; }
+          if (parsed.type === 'barcode' && !scanIsCurrent('lot')) { cameraStatus(t('먼저 가운데 QR을 비춰 주세요. QR 인식 후 하단 바코드를 읽습니다.')); return; }
           if (!applyParsed(parsed)) return;
-          $('cameraStatus').textContent = state.barcode && state.lot ? t('QR과 하단 바코드를 모두 인식했습니다. 스캔 마치기를 눌러 주세요.') : t('QR 인식 완료. 하단 바코드를 비춰 주세요.');
-        } catch { $('cameraStatus').textContent = t('가운데 QR을 먼저 비춘 뒤 카드 아래쪽의 긴 바코드를 비춰 주세요.'); }
-      });
+          cameraStatus(state.barcode && state.lot ? t('QR과 하단 바코드를 모두 인식했습니다. 스캔 마치기를 눌러 주세요.') : t('QR 인식 완료. 하단 바코드를 비춰 주세요.'));
+        } catch { cameraStatus(t(cameraMode() === 'barcode' ? '하단 바코드를 비춰 주세요.' : '먼저 가운데 QR을 비춰 주세요.')); }
+      }, { getMode: cameraMode });
       if (session !== cameraSession) { stop(); return; }
-      stopCamera = stop; $('cameraStatus').textContent = scanIsCurrent('lot') ? t('하단 바코드를 비춰 주세요.') : t('먼저 가운데 QR을 비춰 주세요.');
+      stopCamera = stop; cameraStatus(scanIsCurrent('lot') ? t('하단 바코드를 비춰 주세요.') : t('먼저 가운데 QR을 비춰 주세요.'));
     } catch (error) {
-      if (session === cameraSession) $('cameraStatus').textContent = t('카메라를 시작하지 못했습니다. {error} 사진 읽기 또는 USB 스캐너를 사용할 수 있습니다.', { error: error.message });
+      if (session === cameraSession) cameraStatus(t('카메라를 시작하지 못했습니다. {error} 사진 읽기 또는 USB 스캐너를 사용할 수 있습니다.', { error: error.message }));
     }
   });
   $('cameraDialog').addEventListener('close', endCamera);
