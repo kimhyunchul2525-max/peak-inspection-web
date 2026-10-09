@@ -1111,6 +1111,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     ['카드 사진에서 바코드와 QR을 읽고 있습니다…','Reading barcode and QR from the card photo…','正在從卡片照片讀取條碼及 QR…','Đang đọc mã vạch và QR từ ảnh thẻ…','Membaca kode batang dan QR dari foto kartu…'],
     ['카드 확인','Card verification','卡片確認','Xác nhận thẻ','Verifikasi kartu'],
     ['카메라 사용을 허용해 주세요.','Allow camera access.','請允許使用相機。','Cho phép truy cập camera.','Izinkan akses kamera.'],
+    ['카메라 영상 분석이 중단되었습니다. 카메라를 닫고 다시 열어 주세요.','Camera analysis stopped. Close the camera and open it again.','相機影像辨識已停止。請關閉相機後重新開啟。','Phân tích hình ảnh camera đã dừng. Hãy đóng rồi mở lại camera.','Analisis kamera berhenti. Tutup kamera lalu buka kembali.'],
     ['카메라를 시작하지 못했습니다. {error} 사진 읽기 또는 USB 스캐너를 사용할 수 있습니다.','Could not start the camera. {error} You can use a photo or USB scanner.','無法啟動相機。{error} 您可使用照片讀取或 USB 掃描器。','Không thể khởi động camera. {error} Bạn có thể dùng ảnh hoặc máy quét USB.','Kamera tidak dapat dimulai. {error} Anda dapat menggunakan foto atau pemindai USB.'],
     ['품번 목록에 이 SAP PN이 없습니다. 품번 관리에서 품번과 Description을 추가한 뒤 등록해 주세요.','This SAP PN is missing from the parts list. Add the part number and description in Parts management before registering.','料號清單中沒有此 SAP PN。請先至「料號管理」新增料號及品名說明，再進行登錄。','SAP PN này chưa có trong danh sách. Thêm mã hàng và mô tả trong Quản lý mã hàng trước khi ghi nhận.','SAP PN ini belum ada dalam daftar komponen. Tambahkan nomor komponen dan deskripsi di Manajemen nomor komponen sebelum mencatat.'],
     ['품번 정보를 불러오지 못했습니다. 품번 관리 화면에서 저장소 상태를 확인해 주세요.','Could not load parts data. Check storage status in Parts management.','無法載入料號資料，請至「料號管理」確認儲存空間狀態。','Không thể tải dữ liệu mã hàng. Kiểm tra trạng thái lưu trữ trong Quản lý mã hàng.','Data komponen tidak dapat dimuat. Periksa status penyimpanan di Manajemen nomor komponen.'],
@@ -1886,10 +1887,17 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     const barcode = code128Reader();
     const qr = new z.BrowserQRCodeReader();
     let attemptNumber = 0;
-    // The library's capture loop invokes decode(). Override only frame decoding
-    // so its permission handling, playback, cancellation and lifecycle remain intact.
-    reader.decode = source => {
-      if (options.getMode?.() !== 'barcode') return readRegion(qr, source, [0, 0, 1, 1], 1800);
+    let qrAttempt = 0;
+    // BrowserCodeReader.scan() draws each video frame onto a canvas and calls
+    // decodeFromCanvas(), bypassing decode(). Hook the actual continuous path.
+    // The separate QR/Code128 readers below must keep their original methods.
+    reader.decodeFromCanvas = source => {
+      if (options.getMode?.() !== 'barcode') {
+        try { return readRegion(qr, source, [0, 0, 1, 1], 1800); } catch (_) { /* Colored stock/close-up QR fallback. */ }
+        // A large QR on blue/green stock can defeat adaptive thresholding.
+        // Smaller, high-contrast frames retain the complete symbol and quiet zone.
+        return readRegion(qr, source, [0, 0, 1, 1], 900, qrAttempt++ % 2 ? 140 : 100);
+      }
       const pass = attemptNumber++;
       // Keep the central guide responsive, then sweep other/rotated bands.
       try { return readRegion(barcode, source, barcodeRegions[0].region, 3840); } catch (_) { /* Sweep next. */ }
@@ -1898,8 +1906,16 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     };
     let stopped = false;
     const recent = new Map();
-    const receive = result => {
-      if (!result || stopped) return;
+    const receive = (result, error) => {
+      if (stopped) return;
+      if (!result) {
+        const kind = error?.getKind?.() || error?.name;
+        if (error && !['NotFoundException', 'ChecksumException', 'FormatException'].includes(kind)) {
+          stopped = true;
+          options.onError?.(error);
+        }
+        return;
+      }
       const item = output(result);
       const key = item.format + ':' + item.text;
       const now = Date.now();
@@ -3721,7 +3737,14 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
           if (!applyParsed(parsed)) return;
           cameraStatus(state.barcode && state.lot ? t('QR과 하단 바코드를 모두 인식했습니다. 스캔 마치기를 눌러 주세요.') : t('QR 인식 완료. 하단 바코드를 비춰 주세요.'));
         } catch { cameraStatus(t(cameraMode() === 'barcode' ? '하단 바코드를 비춰 주세요.' : '먼저 가운데 QR을 비춰 주세요.')); }
-      }, { getMode: cameraMode });
+      }, {
+        getMode: cameraMode,
+        onError: () => {
+          if (session !== cameraSession) return;
+          endCamera();
+          cameraStatus(t('카메라 영상 분석이 중단되었습니다. 카메라를 닫고 다시 열어 주세요.'));
+        }
+      });
       if (session !== cameraSession) { stop(); return; }
       stopCamera = stop; cameraStatus(scanIsCurrent('lot') ? t('하단 바코드를 비춰 주세요.') : t('먼저 가운데 QR을 비춰 주세요.'));
     } catch (error) {
