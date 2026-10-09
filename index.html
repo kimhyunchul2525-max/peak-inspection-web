@@ -72,6 +72,39 @@
 .lot-camera-torch{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
 .lot-camera-torch input{width:22px;height:22px;min-height:0;margin:0;padding:0}
 @media(max-width:480px){.lot-camera-choice{grid-template-columns:1fr;gap:6px}.lot-camera-controls{padding:10px}.lot-camera-adjustments{gap:8px 16px}}
+
+.barcode-region-dialog{box-sizing:border-box;width:min(860px,calc(100% - 20px));max-width:860px;max-height:calc(100dvh - 20px);padding:20px;overflow:auto;border:0;border-radius:16px;color:#183249;background:#fff}
+.barcode-region-dialog::backdrop{background:rgba(7,22,35,.72)}
+.barcode-region-dialog h2{margin:0 0 10px;font-size:20px;line-height:1.35}
+.barcode-region-instruction{margin:0 0 12px;color:#455f75;font-size:14px;line-height:1.5}
+.barcode-region-image-area{width:100%;min-height:32px;overflow:hidden;background:#102330;border-radius:8px;display:flex;justify-content:center;align-items:center}
+.barcode-region-stage{position:relative;flex:none;touch-action:none;user-select:none;-webkit-user-select:none;cursor:crosshair;overflow:hidden}
+.barcode-region-image{display:block;width:100%;height:100%;max-width:none;pointer-events:none;-webkit-user-drag:none}
+.barcode-region-overlay{box-sizing:border-box;position:absolute;inset:0;border:3px solid #ffe34d;background:rgba(255,227,77,.06);box-shadow:0 0 0 2000px rgba(0,0,0,.4);pointer-events:none}
+.barcode-region-corner{position:absolute;width:14px;height:14px;transform:translate(-50%,-50%);border:3px solid #fff;border-radius:50%;background:#e66d19;box-shadow:0 0 0 2px #27394b;pointer-events:none}
+.barcode-region-status{min-height:1.5em;margin:10px 0;color:#274b6a;font-size:13px;line-height:1.5}
+.barcode-region-details{margin:8px 0 10px;border:1px solid #d4dfe8;border-radius:8px;padding:10px 12px}
+.barcode-region-details summary{cursor:pointer;font-size:13px;font-weight:600;min-height:24px;line-height:24px}
+.barcode-region-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.barcode-region-fields label{display:flex;flex-direction:column;gap:6px;font-size:12px;margin:0;min-width:0}
+.barcode-region-fields input{box-sizing:border-box;width:100%;min-width:0;min-height:42px;font-size:16px;padding:8px;border:1px solid #bacbd9;border-radius:6px;background:#fff;color:#183249}
+.barcode-region-private{margin:10px 0;color:#617689;font-size:12px;line-height:1.5}
+.barcode-region-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:14px}
+.barcode-region-actions .button{white-space:normal;min-height:46px;font-size:14px;text-align:center}
+.barcode-region-actions .button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:580px){.barcode-region-dialog{padding:14px;border-radius:12px}.barcode-region-dialog h2{font-size:18px}.barcode-region-instruction{font-size:13px}.barcode-region-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.barcode-region-actions .button{flex:1;padding:10px 8px;font-size:13px}}
+@media(orientation:landscape) and (max-height:600px){.barcode-region-dialog{padding:12px 16px}.barcode-region-dialog h2{font-size:17px;margin-bottom:6px}.barcode-region-instruction{font-size:12px;margin-bottom:8px}.barcode-region-status,.barcode-region-private{margin:6px 0}.barcode-region-actions{margin-top:8px}}
+
+.barcode-multi-dialog{box-sizing:border-box;width:min(960px,calc(100% - 20px));max-width:960px;max-height:calc(100dvh - 20px);padding:20px;overflow:auto;border:0;border-radius:16px;color:#183249;background:#fff}
+.barcode-multi-dialog::backdrop{background:rgba(7,22,35,.72)}
+.barcode-multi-dialog h2{font-size:21px;line-height:1.4;margin:0 0 10px}.barcode-multi-instruction{font-size:14px;color:#455f75;line-height:1.6;margin:0 0 12px}
+.barcode-multi-modes{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 10px;padding:8px 12px 10px;border:1px solid #d4dfe8;border-radius:8px}.barcode-multi-modes legend{padding:0 5px;font-size:13px;font-weight:600}.barcode-multi-modes label{display:flex;align-items:center;gap:8px;min-height:44px;margin:0;font-size:16px;cursor:pointer}.barcode-multi-modes input{width:20px;height:20px;min-height:20px;margin:0;font-size:16px;accent-color:#176da1}
+.barcode-multi-subhint{font-size:13px;line-height:1.5;color:#45647e;margin:10px 0}.barcode-multi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.barcode-multi-grid[data-count="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.barcode-multi-slot{min-width:0;padding:12px;border:1px solid #c9d7e2;border-radius:10px;background:#f8fbfd}.barcode-multi-slot[hidden]{display:none}.barcode-multi-slot h3{font-size:15px;line-height:1.4;margin:0 0 10px}.barcode-multi-preview{height:140px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px dashed #b8cbd9;border-radius:6px;background:#edf3f7}.barcode-multi-preview img{display:block;width:100%;height:100%;object-fit:contain}.barcode-multi-preview [hidden]{display:none}.barcode-multi-preview p{font-size:13px;color:#627a8d;text-align:center;margin:10px}.barcode-multi-slot-status{min-height:20px;font-size:12px;line-height:1.5;color:#287345;margin:7px 0}
+.barcode-multi-slot-actions{display:flex;flex-wrap:wrap;gap:6px}.barcode-multi-slot-actions .button{flex:1;min-height:44px;white-space:normal;font-size:13px;padding:8px;text-align:center}.barcode-multi-remove{flex-basis:100%;min-height:44px;border:0;background:transparent;color:#92613f;cursor:pointer;text-decoration:underline;font-size:13px}.barcode-multi-remove:disabled{opacity:.4;cursor:not-allowed;text-decoration:none}
+.barcode-multi-status{color:#275b7d;font-size:14px;font-weight:600;line-height:1.5;margin:12px 0 8px}.barcode-multi-error{border:1px solid #e5b4ae;border-radius:7px;padding:10px;background:#fff2ef;color:#9f3227;font-size:13px;line-height:1.5;overflow-wrap:anywhere}.barcode-multi-private{font-size:12px;line-height:1.5;color:#62798c;margin:10px 0}.barcode-multi-actions{display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:-20px;background:#fff;padding:12px 0 max(6px,env(safe-area-inset-bottom));margin-top:8px}.barcode-multi-actions .button{min-height:46px;font-size:15px;white-space:normal;text-align:center}.barcode-multi-dialog button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:650px){.barcode-multi-dialog{padding:14px;border-radius:12px}.barcode-multi-dialog h2{font-size:19px}.barcode-multi-instruction{font-size:13px}.barcode-multi-grid,.barcode-multi-grid[data-count="3"]{grid-template-columns:1fr}.barcode-multi-slot{display:grid;grid-template-columns:minmax(0,1fr) minmax(128px,1fr);gap:0 10px}.barcode-multi-slot h3{grid-column:1/-1}.barcode-multi-preview{grid-column:1;height:115px}.barcode-multi-slot-status{grid-column:1;grid-row:3;font-size:11px}.barcode-multi-slot-actions{grid-column:2;grid-row:2/4;align-content:start}.barcode-multi-slot-actions .button{flex-basis:100%}.barcode-multi-remove{min-height:40px}.barcode-multi-actions{bottom:-14px}.barcode-multi-actions .button{flex:1}}
+@media(orientation:landscape) and (max-height:600px){.barcode-multi-dialog{padding:12px 16px}.barcode-multi-dialog h2{font-size:18px}.barcode-multi-instruction{font-size:12px}.barcode-multi-preview{height:100px}.barcode-multi-actions{bottom:-12px}}
 footer{flex-wrap:wrap;gap:12px}.public-links{display:flex;flex-wrap:wrap;gap:6px}.public-links a{color:#527294;overflow-wrap:anywhere}</style>
 </head>
 <body>
@@ -119,6 +152,8 @@ footer{flex-wrap:wrap;gap:12px}.public-links{display:flex;flex-wrap:wrap;gap:6px
                 <div class="scan-field-label"><label for="barcodeInput"><span class="scan-order">2</span> <span data-i18n="하단 바코드">하단 바코드</span></label><span id="barcodeStatus" class="subtle"><span data-i18n="QR 인식 후 스캔">QR 인식 후 스캔</span></span></div>
                 <div class="scan-input-wrap"><span class="scan-icon" aria-hidden="true">▥</span><input id="barcodeInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="먼저 가운데 QR을 스캔해 주세요" aria-describedby="barcodeHint" disabled data-i18n-placeholder="먼저 가운데 QR을 스캔해 주세요"><button id="applyBarcode" type="button" disabled><span data-i18n="인식">인식</span></button></div>
                 <button id="nativeBarcodeButton" class="button primary native-barcode-button" type="button" disabled><span data-i18n="하단 바코드 촬영 · 권장">하단 바코드 촬영 · 권장</span></button>
+                <button id="multiBarcodeButton" class="button secondary native-barcode-button" type="button" disabled><span data-i18n="나누어 촬영 · 2~3장">나누어 촬영 · 2~3장</span></button>
+                <button id="retryPhotoRegionButton" class="button secondary native-barcode-button" type="button" hidden><span data-i18n="사진에서 바코드 영역 선택">사진에서 바코드 영역 선택</span></button>
                 <p class="help native-barcode-help" data-i18n="QR 인식 후 촬영 버튼을 누르세요. 아이폰을 가로로 들고 긴 바코드만 크게 담되 양 끝의 흰 여백을 포함해 주세요.">QR 인식 후 촬영 버튼을 누르세요. 아이폰을 가로로 들고 긴 바코드만 크게 담되 양 끝의 흰 여백을 포함해 주세요.</p>
                 <p class="help" id="barcodeHint"><span data-i18n="카드 아래쪽의 긴 바코드에서 SAP PN을 읽습니다. 스캐너의 Enter 또는 Tab으로 인식됩니다.">카드 아래쪽의 긴 바코드에서 SAP PN을 읽습니다. 스캐너의 Enter 또는 Tab으로 인식됩니다.</span></p>
               </div>
@@ -1640,6 +1675,16 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
 (function (global) {
   'use strict';
   const rows = [
+    ['각 사진에서 주변 글자를 제외하고 가늘고 긴 바코드 부분만 다시 선택해 주세요.', 'In each photo, reselect only the narrow barcode strip, excluding surrounding text.', '請在每張照片中重新選取細長條碼區段，排除周圍文字。', 'Trong mỗi ảnh, hãy chọn lại riêng dải mã vạch hẹp, không gồm chữ xung quanh.', 'Pada setiap foto, pilih ulang hanya strip kode batang yang sempit, tanpa teks di sekitarnya.'],
+    ['나누어 촬영 · 2~3장', 'Capture in parts · 2–3 photos', '分段拍攝 · 2–3 張', 'Chụp từng phần · 2–3 ảnh', 'Foto per bagian · 2–3 foto'],
+    ['같은 바코드를 왼쪽부터 2~3장 촬영해 주세요.', 'Take 2–3 photos of the same barcode from left to right.', '請由左至右拍攝同一條碼，共 2–3 張。', 'Chụp 2–3 ảnh của cùng một mã vạch từ trái sang phải.', 'Ambil 2–3 foto kode batang yang sama dari kiri ke kanan.'],
+    ['겹치는 부분을 정확히 맞추지 못했습니다. 같은 거리에서 30~40% 겹치게 다시 촬영해 주세요.', 'The overlapping sections could not be aligned reliably. Keep the same distance and retake with 30–40% overlap.', '無法準確對齊重疊區段。請保持相同距離，以 30–40% 重疊範圍重新拍攝。', 'Không thể căn chính xác các phần chồng lên nhau. Giữ cùng khoảng cách và chụp lại với phần chồng nhau 30–40%.', 'Bagian yang tumpang tindih tidak dapat disejajarkan dengan pasti. Pertahankan jarak yang sama dan foto ulang dengan tumpang tindih 30–40%.'],
+    ['합친 사진에서 유효한 하단 바코드를 읽지 못했습니다. 사진의 순서와 겹치는 부분을 확인해 주세요.', 'No valid bottom barcode was found in the combined photos. Check their order and overlapping sections.', '合併照片中未讀取到有效的下方條碼。請確認照片順序及重疊區段。', 'Không đọc được mã vạch phía dưới hợp lệ trong ảnh ghép. Kiểm tra thứ tự ảnh và các phần chồng nhau.', 'Kode batang bawah yang valid tidak ditemukan pada gabungan foto. Periksa urutan foto dan bagian yang tumpang tindih.'],
+    ['합친 바코드의 계획 오더가 QR 카드 번호와 일치하지 않습니다. 같은 카드의 사진인지 확인해 주세요.', 'The combined barcode’s plan order does not match the QR card number. Check that all photos show the same card.', '合併條碼的計劃訂單與 QR 卡號不符。請確認所有照片均為同一張卡片。', 'Lệnh kế hoạch của mã vạch ghép không khớp số thẻ QR. Kiểm tra tất cả ảnh thuộc cùng một thẻ.', 'Order rencana pada kode batang gabungan tidak sesuai dengan nomor kartu QR. Pastikan semua foto berasal dari kartu yang sama.'],
+    ['바코드 영역을 다시 선택해 주세요.', 'Select the barcode area again.', '請重新選取條碼區域。', 'Vui lòng chọn lại vùng mã vạch.', 'Pilih kembali area kode batang.'],
+    ['사진에서 바코드 영역 선택', 'Select barcode area in photo', '在照片中選取條碼區域', 'Chọn vùng mã vạch trong ảnh', 'Pilih area kode batang pada foto'],
+    ['영역 선택을 취소했습니다. 기존 입력은 유지됩니다.', 'Area selection cancelled. Your existing input is unchanged.', '已取消區域選取。原有輸入保持不變。', 'Đã hủy chọn vùng. Dữ liệu đã nhập được giữ nguyên.', 'Pemilihan area dibatalkan. Isian sebelumnya tetap tersimpan.'],
+    ['하단 바코드를 읽지 못했습니다. 사진에서 바코드 영역을 선택해 다시 읽어 주세요.', 'The bottom barcode could not be read. Select its area in the photo and try again.', '無法讀取下方條碼。請在照片中選取條碼區域後重新辨識。', 'Không đọc được mã vạch phía dưới. Chọn vùng mã vạch trong ảnh rồi thử lại.', 'Kode batang bawah tidak terbaca. Pilih areanya pada foto lalu coba lagi.'],
     ['하단 바코드 촬영 · 권장', 'Photograph bottom barcode · Recommended', '拍攝下方條碼 · 建議使用', 'Chụp mã vạch phía dưới · Khuyên dùng', 'Foto kode batang bawah · Disarankan'],
     ['QR 인식 후 촬영 버튼을 누르세요. 아이폰을 가로로 들고 긴 바코드만 크게 담되 양 끝의 흰 여백을 포함해 주세요.', 'After scanning the QR code, tap the photo button. Hold your iPhone horizontally and fill the photo with the long barcode, including the white margins at both ends.', '辨識 QR 碼後，請點選拍攝按鈕。將 iPhone 橫向持握，讓長條碼盡量填滿照片，並保留兩端的白色空白區。', 'Sau khi quét mã QR, nhấn nút chụp ảnh. Cầm iPhone theo chiều ngang và chụp cận cảnh mã vạch dài, bao gồm khoảng trắng ở cả hai đầu.', 'Setelah memindai kode QR, ketuk tombol foto. Pegang iPhone secara horizontal dan ambil foto kode batang panjang dari dekat, dengan tetap menyertakan area putih di kedua ujungnya.'],
     ['긴 바코드가 화면 가로폭을 채우도록 맞추고 양 끝의 흰 여백을 남겨 주세요. 영상이 흐리면 카메라를 바꾸거나 바코드 사진 촬영을 사용하세요.', 'Fit the long barcode across the screen, leaving white margins at both ends. If the image is blurry, switch cameras or use the barcode photo button.', '讓長條碼填滿螢幕寬度，並保留兩端的白色空白區。若影像模糊，請切換相機或使用條碼拍攝按鈕。', 'Căn mã vạch dài theo chiều rộng màn hình, chừa khoảng trắng ở cả hai đầu. Nếu hình ảnh bị mờ, hãy đổi camera hoặc dùng nút chụp ảnh mã vạch.', 'Paskan kode batang panjang selebar layar, dengan menyisakan area putih di kedua ujungnya. Jika gambar buram, ganti kamera atau gunakan tombol foto kode batang.'],
@@ -2555,6 +2600,731 @@ self.onmessage = async function(event) {
   global.LotCameraControls = Object.freeze({ create });
 })(typeof window !== 'undefined' ? window : globalThis);
 </script>
+  <script>/* Select a barcode region locally without changing or uploading the photo. */
+(function (global) {
+  'use strict';
+  const messages = [
+    ['사진에서 하단 바코드 선택', 'Select the bottom barcode in the photo', '選取照片中的下方條碼', 'Chọn mã vạch phía dưới trong ảnh', 'Pilih kode batang bawah dalam foto'],
+    ['사진에서 바코드 부분 선택', 'Select the barcode section in the photo', '選取照片中的條碼區段', 'Chọn phần mã vạch trong ảnh', 'Pilih bagian kode batang dalam foto'],
+    ['바코드를 둘러싸도록 드래그하거나 서로 반대쪽 모서리 두 곳을 누르세요. 양 끝의 흰 여백을 꼭 포함해 주세요.', 'Drag around the barcode or tap two opposite corners. Include the white margins at both ends.', '請拖曳框選條碼，或點選兩個對角。請務必包含兩端的白色空白區。', 'Kéo để bao quanh mã vạch hoặc chạm vào hai góc đối diện. Nhớ bao gồm khoảng trắng ở cả hai đầu.', 'Seret mengelilingi kode batang atau ketuk dua sudut yang berlawanan. Sertakan area putih di kedua ujungnya.'],
+    ['분석할 바코드 부분을 둘러싸도록 드래그하거나 서로 반대쪽 모서리 두 곳을 누르세요. 다음 사진과 겹치는 부분도 포함해 주세요.', 'Drag around the barcode section to analyze or tap two opposite corners. Include the section that overlaps the next photo.', '請拖曳框選要分析的條碼區段，或點選兩個對角。請包含與下一張照片重疊的區段。', 'Kéo để chọn phần mã vạch cần phân tích hoặc chạm vào hai góc đối diện. Bao gồm cả phần chồng lên ảnh tiếp theo.', 'Seret mengelilingi bagian kode batang yang akan dianalisis atau ketuk dua sudut yang berlawanan. Sertakan bagian yang tumpang tindih dengan foto berikutnya.'],
+    ['사진을 불러오는 중…', 'Loading photo…', '正在載入照片…', 'Đang tải ảnh…', 'Memuat foto…'],
+    ['바코드 선택용 카드 사진', 'Card photo for barcode selection', '用於選取條碼的卡片照片', 'Ảnh thẻ để chọn mã vạch', 'Foto kartu untuk memilih kode batang'],
+    ['선택 영역 미세 조정', 'Adjust selection precisely', '微調選取範圍', 'Tinh chỉnh vùng chọn', 'Sesuaikan area pilihan'],
+    ['왼쪽 위치 (%)', 'Left position (%)', '左側位置 (%)', 'Vị trí bên trái (%)', 'Posisi kiri (%)'],
+    ['위쪽 위치 (%)', 'Top position (%)', '上方位置 (%)', 'Vị trí phía trên (%)', 'Posisi atas (%)'],
+    ['선택 너비 (%)', 'Selection width (%)', '選取寬度 (%)', 'Chiều rộng vùng chọn (%)', 'Lebar pilihan (%)'],
+    ['선택 높이 (%)', 'Selection height (%)', '選取高度 (%)', 'Chiều cao vùng chọn (%)', 'Tinggi pilihan (%)'],
+    ['선택 영역: 너비 {width}%, 높이 {height}%', 'Selection: {width}% wide, {height}% high', '選取範圍：寬度 {width}%，高度 {height}%', 'Vùng chọn: rộng {width}%, cao {height}%', 'Pilihan: lebar {width}%, tinggi {height}%'],
+    ['첫 번째 모서리를 선택했습니다. 반대쪽 모서리를 누르세요.', 'First corner selected. Tap the opposite corner.', '已選取第一個角。請點選對角。', 'Đã chọn góc thứ nhất. Hãy chạm vào góc đối diện.', 'Sudut pertama dipilih. Ketuk sudut yang berlawanan.'],
+    ['바코드 전체와 양 끝의 흰 여백을 포함하도록 선택해 주세요.', 'Select the complete barcode and the white margins at both ends.', '請選取完整條碼及兩端的白色空白區。', 'Chọn toàn bộ mã vạch và khoảng trắng ở cả hai đầu.', 'Pilih seluruh kode batang dan area putih di kedua ujungnya.'],
+    ['분석할 바코드 부분을 선택해 주세요.', 'Select the barcode section to analyze.', '請選取要分析的條碼區段。', 'Chọn phần mã vạch cần phân tích.', 'Pilih bagian kode batang yang akan dianalisis.'],
+    ['사진 전체', 'Whole photo', '整張照片', 'Toàn bộ ảnh', 'Seluruh foto'],
+    ['선택 영역 읽기', 'Read selected area', '辨識選取範圍', 'Đọc vùng đã chọn', 'Baca area pilihan'],
+    ['이 부분 사용', 'Use this section', '使用此區段', 'Dùng phần này', 'Gunakan bagian ini'],
+    ['이 사진은 바코드 인식에만 사용되며 업로드되지 않습니다.', 'This photo is used only to read the barcode and is not uploaded.', '此照片僅用於辨識條碼，不會上傳。', 'Ảnh này chỉ được dùng để đọc mã vạch và không được tải lên.', 'Foto ini hanya digunakan untuk membaca kode batang dan tidak diunggah.'],
+    ['사진 선택 화면을 열 수 없습니다. 브라우저를 업데이트한 뒤 다시 시도해 주세요.', 'The photo selection screen could not be opened. Update your browser and try again.', '無法開啟照片選取畫面。請更新瀏覽器後重試。', 'Không thể mở màn hình chọn ảnh. Hãy cập nhật trình duyệt rồi thử lại.', 'Layar pemilihan foto tidak dapat dibuka. Perbarui peramban lalu coba lagi.']
+  ];
+  global.I18n?.addMessages(Object.fromEntries(messages.map(([source, en, zhTW, vi, id]) => [source, { en, 'zh-TW': zhTW, vi, id }])));
+  const t = (source, params = {}) => global.I18n?.t(source, params) || source.replace(/\{(\w+)\}/g, (_, key) => String(params[key] ?? `{${key}}`));
+  let active = null;
+  let sequence = 0;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+  const percent = value => (value * 100).toFixed(1).replace(/\.0$/, '');
+
+  function element(tag, className, source) {
+    const result = document.createElement(tag);
+    if (className) result.className = className;
+    if (source) {
+      if (global.I18n?.bind) global.I18n.bind(result, source);
+      else result.textContent = source;
+    }
+    return result;
+  }
+
+  function choose(file, options = {}) {
+    active?.finish(null);
+    if (!(file instanceof Blob)) return Promise.reject(new Error(t('사진 파일을 선택해 주세요.')));
+    return new Promise((resolve, reject) => {
+      const suffix = ++sequence;
+      const dialog = element('dialog', 'barcode-region-dialog');
+      if (typeof dialog.showModal !== 'function') {
+        reject(new Error(t('사진 선택 화면을 열 수 없습니다. 브라우저를 업데이트한 뒤 다시 시도해 주세요.')));
+        return;
+      }
+      const heading = element('h2', '', options.partial ? '사진에서 바코드 부분 선택' : '사진에서 하단 바코드 선택');
+      heading.id = `barcode-region-title-${suffix}`;
+      const instruction = element('p', 'barcode-region-instruction', options.partial ? '분석할 바코드 부분을 둘러싸도록 드래그하거나 서로 반대쪽 모서리 두 곳을 누르세요. 다음 사진과 겹치는 부분도 포함해 주세요.' : '바코드를 둘러싸도록 드래그하거나 서로 반대쪽 모서리 두 곳을 누르세요. 양 끝의 흰 여백을 꼭 포함해 주세요.');
+      instruction.id = `barcode-region-help-${suffix}`;
+      dialog.setAttribute('aria-labelledby', heading.id);
+      dialog.setAttribute('aria-describedby', instruction.id);
+      const imageArea = element('div', 'barcode-region-image-area');
+      const stage = element('div', 'barcode-region-stage');
+      const image = element('img', 'barcode-region-image');
+      image.draggable = false;
+      image.alt = t('바코드 선택용 카드 사진');
+      const overlay = element('div', 'barcode-region-overlay');
+      const corner = element('div', 'barcode-region-corner');
+      overlay.setAttribute('aria-hidden', 'true');
+      corner.setAttribute('aria-hidden', 'true');
+      corner.hidden = true;
+      stage.append(image, overlay, corner);
+      imageArea.append(stage);
+      const status = element('p', 'barcode-region-status', '사진을 불러오는 중…');
+      status.setAttribute('role', 'status');
+      status.setAttribute('aria-live', 'polite');
+      const details = element('details', 'barcode-region-details');
+      details.append(element('summary', '', '선택 영역 미세 조정'));
+      const fields = element('div', 'barcode-region-fields');
+      const inputs = ['왼쪽 위치 (%)', '위쪽 위치 (%)', '선택 너비 (%)', '선택 높이 (%)'].map((source, index) => {
+        const label = element('label', '');
+        const input = element('input', '');
+        input.type = 'number';
+        input.inputMode = 'decimal';
+        input.min = index < 2 ? '0' : '0.1';
+        input.max = index < 2 ? '99.9' : '100';
+        input.step = '0.1';
+        input.disabled = true;
+        label.append(element('span', '', source), input);
+        fields.append(label);
+        return input;
+      });
+      details.append(fields);
+      const actions = element('div', 'barcode-region-actions');
+      const reset = element('button', 'button secondary', '사진 전체');
+      const cancel = element('button', 'button secondary', '취소');
+      const use = element('button', 'button primary', options.partial ? '이 부분 사용' : '선택 영역 읽기');
+      for (const button of [reset, cancel, use]) button.type = 'button';
+      reset.disabled = use.disabled = true;
+      actions.append(reset, cancel, use);
+      dialog.append(heading, instruction, imageArea, status, details, element('p', 'barcode-region-private', '이 사진은 바코드 인식에만 사용되며 업로드되지 않습니다.'), actions);
+      let region = [0, 0, 1, 1];
+      let firstCorner = null;
+      let drag = null;
+      let ready = false;
+      let closed = false;
+      const url = URL.createObjectURL(file);
+      let observer;
+
+      function finish(value, error) {
+        if (closed) return;
+        closed = true;
+        observer?.disconnect();
+        global.removeEventListener('resize', layout);
+        document.removeEventListener('languagechange', translate);
+        image.onload = image.onerror = null;
+        image.removeAttribute('src');
+        URL.revokeObjectURL(url);
+        if (dialog.open) dialog.close();
+        dialog.remove();
+        if (active?.finish === finish) active = null;
+        if (error) reject(error); else resolve(value);
+      }
+
+      function render() {
+        const [x, y, width, height] = region;
+        Object.assign(overlay.style, { left: `${x * 100}%`, top: `${y * 100}%`, width: `${width * 100}%`, height: `${height * 100}%` });
+        inputs.forEach((input, index) => { input.value = percent(region[index]); input.disabled = !ready; });
+        const valid = ready && width * image.naturalWidth >= 1 && height * image.naturalHeight >= 1;
+        use.disabled = !valid || Boolean(firstCorner);
+        reset.disabled = !ready;
+        corner.hidden = !firstCorner;
+        if (firstCorner) Object.assign(corner.style, { left: `${firstCorner.x * 100}%`, top: `${firstCorner.y * 100}%` });
+        status.textContent = !ready ? t('사진을 불러오는 중…') : firstCorner ? t('첫 번째 모서리를 선택했습니다. 반대쪽 모서리를 누르세요.') : !valid ? t(options.partial ? '분석할 바코드 부분을 선택해 주세요.' : '바코드 전체와 양 끝의 흰 여백을 포함하도록 선택해 주세요.') : t('선택 영역: 너비 {width}%, 높이 {height}%', { width: percent(width), height: percent(height) });
+      }
+
+      function layout() {
+        if (!ready || closed) return;
+        // Size the stage to the displayed image, so pointer coordinates never
+        // include letterboxing and always map to the original image dimensions.
+        const availableWidth = Math.max(1, imageArea.clientWidth);
+        const availableHeight = Math.max(120, global.innerHeight * 0.43);
+        const scale = Math.min(1, availableWidth / image.naturalWidth, availableHeight / image.naturalHeight);
+        stage.style.width = `${image.naturalWidth * scale}px`;
+        stage.style.height = `${image.naturalHeight * scale}px`;
+      }
+
+      function translate() {
+        global.I18n?.refresh(dialog);
+        image.alt = t('바코드 선택용 카드 사진');
+        render();
+      }
+
+      function point(event) {
+        const bounds = stage.getBoundingClientRect();
+        return { x: clamp((event.clientX - bounds.left) / bounds.width, 0, 1), y: clamp((event.clientY - bounds.top) / bounds.height, 0, 1) };
+      }
+
+      function selectBetween(a, b) {
+        region = [Math.min(a.x, b.x), Math.min(a.y, b.y), Math.abs(a.x - b.x), Math.abs(a.y - b.y)];
+        render();
+      }
+
+      stage.addEventListener('pointerdown', event => {
+        if (!ready || drag || event.button !== 0) return;
+        event.preventDefault();
+        drag = { id: event.pointerId, start: point(event), clientX: event.clientX, clientY: event.clientY, moved: false, previous: [...region] };
+        stage.setPointerCapture?.(event.pointerId);
+      });
+      stage.addEventListener('pointermove', event => {
+        if (!drag || drag.id !== event.pointerId) return;
+        if (Math.hypot(event.clientX - drag.clientX, event.clientY - drag.clientY) > 4) drag.moved = true;
+        if (drag.moved) { firstCorner = null; selectBetween(drag.start, point(event)); }
+      });
+      stage.addEventListener('pointerup', event => {
+        if (!drag || drag.id !== event.pointerId) return;
+        const current = point(event);
+        if (drag.moved) { firstCorner = null; selectBetween(drag.start, current); }
+        else if (firstCorner) { const start = firstCorner; firstCorner = null; selectBetween(start, current); }
+        else { firstCorner = current; render(); }
+        if (stage.hasPointerCapture?.(event.pointerId)) stage.releasePointerCapture(event.pointerId);
+        drag = null;
+      });
+      stage.addEventListener('pointercancel', event => {
+        if (!drag || drag.id !== event.pointerId) return;
+        region = drag.previous;
+        drag = null;
+        firstCorner = null;
+        render();
+      });
+      inputs.forEach((input, index) => input.addEventListener('change', () => {
+        const value = Number(input.value);
+        if (input.value.trim() && Number.isFinite(value)) {
+          region[index] = clamp(value / 100, index < 2 ? 0 : 0.001, index < 2 ? 0.999 : 1);
+          region[2] = Math.min(region[2], 1 - region[0]);
+          region[3] = Math.min(region[3], 1 - region[1]);
+          firstCorner = null;
+        }
+        render();
+      }));
+      reset.addEventListener('click', () => { region = [0, 0, 1, 1]; firstCorner = null; render(); });
+      cancel.addEventListener('click', () => finish(null));
+      use.addEventListener('click', () => { if (!use.disabled) finish({ region: [...region] }); });
+      dialog.addEventListener('cancel', event => { event.preventDefault(); finish(null); });
+      dialog.addEventListener('close', () => finish(null));
+      image.onload = () => { ready = true; layout(); render(); };
+      image.onerror = () => finish(null, new Error(t('사진을 열 수 없습니다. JPG 또는 PNG 파일을 선택해 주세요.')));
+      active = { finish, owner: options.owner };
+      document.body.append(dialog);
+      try { dialog.showModal(); }
+      catch (error) { finish(null, new Error(t('사진 선택 화면을 열 수 없습니다. 브라우저를 업데이트한 뒤 다시 시도해 주세요.'))); return; }
+      global.addEventListener('resize', layout);
+      document.addEventListener('languagechange', translate);
+      if (global.ResizeObserver) { observer = new ResizeObserver(layout); observer.observe(imageArea); }
+      image.src = url;
+    });
+  }
+
+  global.BarcodeRegionPicker = Object.freeze({ choose, cancel(owner) { if (arguments.length === 0 || active?.owner === owner) active?.finish(null); } });
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+  <script>/* Reconstruct a 1D scan line from 2–3 ordered, overlapping barcode photographs.
+ * No OCR, guessed symbols or network access. Input crops must contain the same
+ * barcode, photographed left-to-right at a similar distance, with 30–40% overlap.
+ * A confident image alignment is NOT barcode validation: callers must decode the
+ * returned pixels with a checksum-validating Code 128 reader and validate the
+ * complete lot payload before accepting it. Strong perspective/curvature, blur,
+ * missing ends, insufficient overlap and repeated patterns can require a retake.
+ */
+(function (global) {
+  'use strict';
+  const MAX_PART_WIDTH = 1800;
+  const MIN_CORRELATION = 0.88;
+  const MIN_PEAK_GAP = 0.08;
+  const MAX_INPUT_PIXELS = 8000000;
+
+  function fail(code) {
+    const error = new Error(code);
+    error.name = 'BarcodeStitchError';
+    error.code = code;
+    return error;
+  }
+  function canvas(width, height) {
+    const result = global.document.createElement('canvas');
+    result.width = width; result.height = height;
+    return result;
+  }
+  function release(image) { image.width = image.height = 1; }
+  function prepare(input) {
+    const width = Number(input?.width), height = Number(input?.height);
+    if (!Number.isInteger(width) || !Number.isInteger(height) || width < 32 || height < 8 ||
+      width * height > MAX_INPUT_PIXELS || !input.data || input.data.length !== width * height * 4) throw fail('INVALID_IMAGE');
+    const original = canvas(width, height);
+    let output;
+    try {
+      const context = original.getContext('2d', { willReadFrequently: true });
+      const pixels = context.createImageData(width, height);
+      pixels.data.set(input.data);
+      context.putImageData(pixels, 0, 0);
+      const portrait = height > width;
+      const longSide = portrait ? height : width, shortSide = portrait ? width : height;
+      // Cropping is required: a whole photo contains unrelated edges and consumes
+      // detail needed by the narrow bars. Rotate portrait barcode crops as a unit.
+      if (longSide / shortSide < 2.5) throw fail('CROP_TOO_TALL');
+      const scale = Math.min(1, MAX_PART_WIDTH / longSide);
+      const w = Math.round(longSide * scale), h = Math.round(shortSide * scale);
+      output = canvas(w, h);
+      const ctx = output.getContext('2d', { willReadFrequently: true });
+      ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);
+      if (portrait) { ctx.translate(w, 0); ctx.rotate(Math.PI / 2); ctx.drawImage(original, 0, 0, h, w); }
+      else ctx.drawImage(original, 0, 0, w, h);
+      return output;
+    } catch (error) { if (output) release(output); throw error; }
+    finally { release(original); }
+  }
+  function rotate(source, degrees) {
+    const radians = degrees * Math.PI / 180;
+    const sine = Math.abs(Math.sin(radians)), cosine = Math.abs(Math.cos(radians));
+    const output = canvas(Math.ceil(source.width * cosine + source.height * sine), Math.ceil(source.height * cosine + source.width * sine));
+    const ctx = output.getContext('2d', { willReadFrequently: true });
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, output.width, output.height);
+    ctx.translate(output.width / 2, output.height / 2);
+    ctx.rotate(radians);
+    ctx.drawImage(source, -source.width / 2, -source.height / 2);
+    return output;
+  }
+  function profileForAngle(source, angle) {
+    const image = rotate(source, angle);
+    try {
+      const width = image.width, height = image.height;
+      const bytes = image.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, width, height).data;
+      const gray = new Float32Array(width * height);
+      for (let i = 0; i < gray.length; i++) gray[i] = bytes[i * 4] * 0.299 + bytes[i * 4 + 1] * 0.587 + bytes[i * 4 + 2] * 0.114;
+      let bestScore = -1, bestProfile = null, bestRow = 0;
+      for (let y = 3; y < height - 3; y += 2) {
+        const profile = new Float32Array(width);
+        for (let x = 0; x < width; x++) {
+          let sum = 0;
+          for (let dy = -2; dy <= 2; dy++) sum += gray[(y + dy) * width + x];
+          profile[x] = sum / 5;
+        }
+        let energy = 0, first = width, last = 0;
+        for (let x = 1; x < width; x++) {
+          const difference = Math.abs(profile[x] - profile[x - 1]);
+          energy += Math.min(80, difference);
+          if (difference > 20) { first = Math.min(first, x); last = x; }
+        }
+        const score = energy * Math.pow(Math.max(0, last - first) / width, 2);
+        if (score > bestScore) { bestScore = score; bestProfile = profile; bestRow = y; }
+      }
+      return { profile: bestProfile, score: bestScore, angle, row: bestRow };
+    } finally { release(image); }
+  }
+  async function extract(source) {
+    let best = { score: -1 };
+    for (let angle = -10; angle <= 10; angle++) {
+      const candidate = profileForAngle(source, angle);
+      if (candidate.score > best.score) best = candidate;
+      if ((angle + 10) % 4 === 3) await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    if (!best.profile || best.score / best.profile.length < 5) throw fail('NO_BAR_PATTERN');
+    return best;
+  }
+  function at(profile, position) {
+    const left = Math.floor(position);
+    if (left < 0 || left >= profile.length) return 255;
+    const fraction = position - left;
+    return profile[left] * (1 - fraction) + profile[Math.min(profile.length - 1, left + 1)] * fraction;
+  }
+  function correlation(left, right, offset, scale, step) {
+    const from = Math.max(0, offset), to = Math.min(left.length, offset + right.length * scale);
+    let count = 0, sumA = 0, sumB = 0, squaresA = 0, squaresB = 0, products = 0;
+    for (let x = from + 3; x < to - 3; x += step) {
+      const a = at(left, x), b = at(right, (x - offset) / scale);
+      count++; sumA += a; sumB += b; squaresA += a * a; squaresB += b * b; products += a * b;
+    }
+    const varianceA = squaresA - sumA * sumA / count, varianceB = squaresB - sumB * sumB / count;
+    if (count < 60 || varianceA / count < 150 || varianceB / count < 150) return -1;
+    return (products - sumA * sumB / count) / Math.sqrt(varianceA * varianceB);
+  }
+  function validOverlap(left, right, offset, scale) {
+    const overlap = Math.min(left.length - offset, right.length * scale);
+    const shortSide = Math.min(left.length, right.length * scale);
+    return offset > 0 && overlap >= shortSide * 0.25 && overlap <= shortSide * 0.65;
+  }
+  function alignment(left, right) {
+    const candidates = [];
+    for (let scale = 0.8; scale <= 1.251; scale += 0.02) {
+      const start = Math.max(1, Math.floor(left.length - Math.min(left.length, right.length * scale) * 0.65));
+      const end = left.length - Math.min(left.length, right.length * scale) * 0.25;
+      for (let offset = start; offset <= end; offset += 3) {
+        const score = correlation(left, right, offset, scale, 3);
+        candidates.push({ scale, offset, score });
+      }
+    }
+    candidates.sort((a, b) => b.score - a.score);
+    if (!candidates.length) throw fail('INSUFFICIENT_OVERLAP');
+    let best = candidates[0];
+    for (const seed of candidates.slice(0, 4)) {
+      for (let scale = seed.scale - 0.02; scale <= seed.scale + 0.0201; scale += 0.002) {
+        for (let offset = seed.offset - 4; offset <= seed.offset + 4; offset += 0.5) {
+          if (!validOverlap(left, right, offset, scale)) continue;
+          const score = correlation(left, right, offset, scale, 1);
+          if (score > best.score) best = { scale, offset, score };
+        }
+      }
+    }
+    // Nearby subpixel variants describe the same alignment; a separate strong
+    // peak means repetitive bars cannot identify a unique overlap safely.
+    const competitor = candidates.find(candidate => Math.abs(candidate.offset - best.offset) > 15 &&
+      Math.abs(candidate.offset + candidate.scale * right.length / 2 - (best.offset + best.scale * right.length / 2)) > 15);
+    let alternativeScore = competitor?.score ?? -1;
+    // Coarse phase offsets may miss equally strong repeated patterns. Recheck
+    // competing positions at the winning scale before declaring it unique.
+    const minimumOffset = Math.max(1, Math.floor(left.length - Math.min(left.length, right.length * best.scale) * 0.65));
+    const maximumOffset = left.length - Math.min(left.length, right.length * best.scale) * 0.25;
+    for (let offset = minimumOffset; offset <= maximumOffset; offset++) {
+      if (Math.abs(offset - best.offset) <= 15) continue;
+      alternativeScore = Math.max(alternativeScore, correlation(left, right, offset, best.scale, 1));
+    }
+    const gap = best.score - alternativeScore;
+    if (best.score < MIN_CORRELATION) throw fail('OVERLAP_NOT_FOUND');
+    if (gap < MIN_PEAK_GAP) throw fail('AMBIGUOUS_OVERLAP');
+    return { ...best, gap, overlap: (left.length - best.offset) / (right.length * best.scale) };
+  }
+  function merge(left, right, match) {
+    const { offset, scale } = match;
+    const size = Math.ceil(Math.max(left.length, offset + right.length * scale));
+    if (size > 8000) throw fail('STITCH_TOO_WIDE');
+    const output = new Float32Array(size);
+    const seam = (offset + left.length) / 2;
+    for (let x = 0; x < size; x++) output[x] = x < seam ? at(left, x) : at(right, (x - offset) / scale);
+    return output;
+  }
+  function render(profile) {
+    const width = profile.length + 80, height = 120;
+    const data = new Uint8ClampedArray(width * height * 4);
+    data.fill(255);
+    for (let y = 25; y < 95; y++) {
+      for (let x = 0; x < profile.length; x++) {
+        const i = (y * width + x + 40) * 4;
+        data[i] = data[i + 1] = data[i + 2] = Math.round(profile[x]);
+      }
+    }
+    return { data, width, height };
+  }
+  async function combine(images) {
+    if (!Array.isArray(images) || images.length < 2 || images.length > 3) throw fail('PART_COUNT');
+    const profiles = [];
+    for (const image of images) {
+      const source = prepare(image);
+      try { profiles.push(await extract(source)); }
+      finally { release(source); }
+      // Let an iPhone paint progress and process user cancellation between parts.
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    let current = profiles[0].profile;
+    const matches = [];
+    for (let i = 1; i < profiles.length; i++) {
+      const match = alignment(current, profiles[i].profile);
+      matches.push(match);
+      current = merge(current, profiles[i].profile, match);
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    return { ...render(current), diagnostics: {
+      requiresBarcodeValidation: true,
+      parts: profiles.map(part => ({ angle: part.angle, score: part.score })),
+      matches
+    } };
+  }
+  global.BarcodeStitch = Object.freeze({ combine });
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+  <script>/* Collect overlapping barcode photos locally; the caller supplies the decoder. */
+(function (global) {
+  'use strict';
+  const rows = [
+    ['긴 바코드 나누어 촬영', 'Photograph the long barcode in sections', '分段拍攝長條碼', 'Chụp mã vạch dài theo từng phần', 'Foto kode batang panjang per bagian'],
+    ['촬영할 사진 수', 'Number of photos', '拍攝張數', 'Số ảnh cần chụp', 'Jumlah foto'],
+    ['사진 {count}장', '{count} photos', '{count} 張照片', '{count} ảnh', '{count} foto'],
+    ['사진 수를 변경하여 기존 사진을 비웠습니다. 왼쪽부터 다시 촬영해 주세요.', 'Changing the photo count cleared the previous photos. Take new photos starting from the left.', '照片張數已變更，原有照片已清除。請從左側重新拍攝。', 'Đã xóa các ảnh trước đó do thay đổi số lượng ảnh. Hãy chụp lại từ bên trái.', 'Perubahan jumlah foto menghapus foto sebelumnya. Ambil foto baru mulai dari kiri.'],
+    ['왼쪽에서 오른쪽 순서로 촬영하세요. 이웃 사진이 30~40% 겹치도록 하고 거리와 각도를 유지하세요. 첫 사진에는 왼쪽 흰 여백, 마지막 사진에는 오른쪽 흰 여백을 포함하세요.', 'Take photos from left to right. Overlap neighboring photos by 30–40% and keep the distance and angle the same. Include the left white margin in the first photo and the right white margin in the last.', '請由左至右拍攝，相鄰照片需重疊 30～40%，並保持相同距離與角度。第一張需包含左端白色空白區，最後一張需包含右端白色空白區。', 'Chụp từ trái sang phải. Để các ảnh liền kề chồng lên nhau 30–40% và giữ nguyên khoảng cách, góc chụp. Ảnh đầu phải có khoảng trắng bên trái, ảnh cuối phải có khoảng trắng bên phải.', 'Ambil foto dari kiri ke kanan. Buat foto bersebelahan tumpang tindih 30–40% dan pertahankan jarak serta sudut. Sertakan area putih kiri pada foto pertama dan area putih kanan pada foto terakhir.'],
+    ['사진을 고른 뒤 바코드 부분만 선택해 주세요.', 'After choosing each photo, select its barcode section.', '選取照片後，請框選條碼區段。', 'Sau khi chọn từng ảnh, hãy chọn phần mã vạch trong ảnh.', 'Setelah memilih setiap foto, pilih bagian kode batangnya.'],
+    ['{number}번 · 왼쪽 시작', '{number} · Left end', '第 {number} 張 · 左端', 'Ảnh {number} · Đầu bên trái', '{number} · Ujung kiri'],
+    ['{number}번 · 가운데', '{number} · Middle', '第 {number} 張 · 中間', 'Ảnh {number} · Phần giữa', '{number} · Bagian tengah'],
+    ['{number}번 · 오른쪽 끝', '{number} · Right end', '第 {number} 張 · 右端', 'Ảnh {number} · Đầu bên phải', '{number} · Ujung kanan'],
+    ['{number}번 바코드 사진', 'Barcode photo {number}', '第 {number} 張條碼照片', 'Ảnh mã vạch {number}', 'Foto kode batang {number}'],
+    ['사진을 추가해 주세요.', 'Add a photo.', '請新增照片。', 'Thêm ảnh.', 'Tambahkan foto.'],
+    ['바코드 부분 선택 완료', 'Barcode section selected', '已選取條碼區段', 'Đã chọn phần mã vạch', 'Bagian kode batang dipilih'],
+    ['촬영', 'Take photo', '拍攝', 'Chụp ảnh', 'Ambil foto'],
+    ['사진 선택', 'Choose photo', '選擇照片', 'Chọn ảnh', 'Pilih foto'],
+    ['다시 촬영', 'Retake photo', '重新拍攝', 'Chụp lại', 'Foto ulang'],
+    ['영역 다시 선택', 'Select area again', '重新選取區域', 'Chọn lại vùng', 'Pilih ulang area'],
+    ['사진 삭제', 'Remove photo', '移除照片', 'Xóa ảnh', 'Hapus foto'],
+    ['합쳐서 읽기', 'Combine and read', '合併辨識', 'Ghép và đọc', 'Gabungkan dan baca'],
+    ['사진 {done}/{count}장 준비됨', '{done}/{count} photos ready', '已準備 {done}/{count} 張照片', 'Đã chuẩn bị {done}/{count} ảnh', '{done}/{count} foto siap'],
+    ['사진의 바코드 부분을 선택하고 있습니다…', 'Selecting the barcode section in the photo…', '正在選取照片中的條碼區段…', 'Đang chọn phần mã vạch trong ảnh…', 'Memilih bagian kode batang dalam foto…'],
+    ['사진 {count}장을 합쳐 바코드를 읽고 있습니다…', 'Combining {count} photos to read the barcode…', '正在合併 {count} 張照片以辨識條碼…', 'Đang ghép {count} ảnh để đọc mã vạch…', 'Menggabungkan {count} foto untuk membaca kode batang…'],
+    ['사진은 이 기기에서만 분석하며 업로드하지 않습니다.', 'Photos are analyzed only on this device and are not uploaded.', '照片僅在此裝置上分析，不會上傳。', 'Ảnh chỉ được phân tích trên thiết bị này và không được tải lên.', 'Foto hanya dianalisis di perangkat ini dan tidak diunggah.'],
+    ['바코드를 읽지 못했습니다. 사진의 순서와 겹치는 부분을 확인하고 다시 시도해 주세요.', 'The barcode could not be read. Check the photo order and overlapping sections, then try again.', '無法辨識條碼。請確認照片順序與重疊區段後重試。', 'Không thể đọc mã vạch. Kiểm tra thứ tự ảnh và các phần chồng nhau rồi thử lại.', 'Kode batang tidak dapat dibaca. Periksa urutan foto dan bagian yang tumpang tindih, lalu coba lagi.'],
+    ['바코드 선택 도구를 불러오지 못했습니다. 화면을 새로 고친 뒤 다시 시도해 주세요.', 'The barcode selection tool could not be loaded. Refresh the page and try again.', '無法載入條碼選取工具。請重新整理頁面後重試。', 'Không thể tải công cụ chọn mã vạch. Hãy tải lại trang rồi thử lại.', 'Alat pemilihan kode batang tidak dapat dimuat. Muat ulang halaman lalu coba lagi.'],
+    ['바코드 사진 분석 도구를 사용할 수 없습니다.', 'The barcode photo reader is unavailable.', '無法使用條碼照片分析工具。', 'Không thể sử dụng công cụ đọc ảnh mã vạch.', 'Pembaca foto kode batang tidak tersedia.'],
+    ['사진 촬영 화면을 열 수 없습니다. 브라우저를 업데이트한 뒤 다시 시도해 주세요.', 'The photo capture screen could not be opened. Update your browser and try again.', '無法開啟拍攝畫面。請更新瀏覽器後重試。', 'Không thể mở màn hình chụp ảnh. Hãy cập nhật trình duyệt rồi thử lại.', 'Layar pengambilan foto tidak dapat dibuka. Perbarui peramban lalu coba lagi.']
+  ];
+  global.I18n?.addMessages(Object.fromEntries(rows.map(([source, en, zhTW, vi, id]) => [source, { en, 'zh-TW': zhTW, vi, id }])));
+  const t = (source, params = {}) => global.I18n?.t(source, params) || source.replace(/\{(\w+)\}/g, (_, key) => String(params[key] ?? `{${key}}`));
+  let active = null;
+  let sequence = 0;
+  function node(tag, className, source) {
+    const result = document.createElement(tag);
+    if (className) result.className = className;
+    if (source) {
+      if (global.I18n?.bind) global.I18n.bind(result, source);
+      else result.textContent = source;
+    }
+    return result;
+  }
+
+  // Keep only a small preview decoded in each slot. The original compressed
+  // File is retained for the reader, but no original-size canvas is allocated.
+  function makePreview(file, region, owner) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      const url = URL.createObjectURL(file);
+      let canvas = null;
+      let done = false;
+      let sourceReleased = false;
+      function releaseSource() {
+        if (sourceReleased) return;
+        sourceReleased = true;
+        image.onload = image.onerror = null;
+        image.src = '';
+        URL.revokeObjectURL(url);
+      }
+      function finish(error, blob) {
+        if (done) return;
+        done = true;
+        releaseSource();
+        if (canvas) { canvas.width = canvas.height = 1; canvas = null; }
+        if (owner.cancelPreview === cancel) owner.cancelPreview = null;
+        if (error) reject(error); else resolve(blob);
+      }
+      function cancel() { finish(new Error('Preview cancelled')); }
+      owner.cancelPreview = cancel;
+      image.onerror = () => finish(new Error(t('사진을 열 수 없습니다. JPG 또는 PNG 파일을 선택해 주세요.')));
+      image.onload = () => {
+        if (done) return;
+        try {
+          const [x, y, width, height] = region;
+          if (![x, y, width, height].every(Number.isFinite) || x < 0 || y < 0 || width <= 0 || height <= 0 || x + width > 1.000001 || y + height > 1.000001) throw new Error(t('사진을 열 수 없습니다. JPG 또는 PNG 파일을 선택해 주세요.'));
+          const sourceWidth = width * image.naturalWidth;
+          const sourceHeight = height * image.naturalHeight;
+          const scale = Math.min(1, 640 / Math.max(sourceWidth, sourceHeight));
+          canvas = document.createElement('canvas');
+          canvas.width = Math.max(1, Math.round(sourceWidth * scale));
+          canvas.height = Math.max(1, Math.round(sourceHeight * scale));
+          const context = canvas.getContext('2d');
+          context.fillStyle = '#fff'; context.fillRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(image, x * image.naturalWidth, y * image.naturalHeight, sourceWidth, sourceHeight, 0, 0, canvas.width, canvas.height);
+          releaseSource();
+          canvas.toBlob(blob => {
+            if (done) return;
+            if (!blob) finish(new Error(t('사진을 열 수 없습니다. JPG 또는 PNG 파일을 선택해 주세요.')));
+            else finish(null, blob);
+          }, 'image/jpeg', 0.82);
+        } catch (failure) { finish(failure); }
+      };
+      image.src = url;
+    });
+  }
+
+  function captureAndRead({ read } = {}) {
+    active?.finish(null);
+    if (typeof read !== 'function') return Promise.reject(new Error(t('바코드 사진 분석 도구를 사용할 수 없습니다.')));
+    return new Promise((resolve, reject) => {
+      const suffix = ++sequence;
+      let count = 2;
+      let revision = 0;
+      let closed = false;
+      let reading = false;
+      let cropOwner = null;
+      let errorText = '';
+      let photosReset = false;
+      const dialog = node('dialog', 'barcode-multi-dialog');
+      if (typeof dialog.showModal !== 'function') {
+        reject(new Error(t('사진 촬영 화면을 열 수 없습니다. 브라우저를 업데이트한 뒤 다시 시도해 주세요.')));
+        return;
+      }
+      const title = node('h2', '', '긴 바코드 나누어 촬영');
+      title.id = `barcode-multi-title-${suffix}`;
+      dialog.setAttribute('aria-labelledby', title.id);
+      const hint = node('p', 'barcode-multi-instruction', '왼쪽에서 오른쪽 순서로 촬영하세요. 이웃 사진이 30~40% 겹치도록 하고 거리와 각도를 유지하세요. 첫 사진에는 왼쪽 흰 여백, 마지막 사진에는 오른쪽 흰 여백을 포함하세요.');
+      hint.id = `barcode-multi-hint-${suffix}`;
+      dialog.setAttribute('aria-describedby', hint.id);
+      const modes = node('fieldset', 'barcode-multi-modes');
+      modes.append(node('legend', '', '촬영할 사진 수'));
+      const modeInputs = [2, 3].map(value => {
+        const label = node('label', '');
+        const input = node('input', '');
+        input.type = 'radio'; input.name = `barcode-photo-count-${suffix}`; input.value = String(value); input.checked = value === count;
+        const text = node('span', '');
+        const source = '사진 {count}장';
+        if (global.I18n?.bind) global.I18n.bind(text, source, { count: value }); else text.textContent = t(source, { count: value });
+        label.append(input, text); modes.append(label);
+        input.addEventListener('change', () => {
+          if (reading || cropOwner || !input.checked || count === value) return;
+          photosReset = slots.some(slot => slot.file);
+          slots.forEach(clearSlot);
+          count = value; revision++; errorText = ''; render();
+        });
+        return input;
+      });
+      const grid = node('div', 'barcode-multi-grid');
+      const slots = [0, 1, 2].map(index => {
+        const section = node('section', 'barcode-multi-slot');
+        const heading = node('h3', '');
+        const preview = node('div', 'barcode-multi-preview');
+        const image = node('img', ''); image.hidden = true;
+        const empty = node('p', '', '사진을 추가해 주세요.');
+        preview.append(image, empty);
+        const status = node('p', 'barcode-multi-slot-status');
+        const actions = node('div', 'barcode-multi-slot-actions');
+        const capture = node('button', 'button secondary');
+        const pick = node('button', 'button secondary', '사진 선택');
+        const recrop = node('button', 'button secondary', '영역 다시 선택');
+        const remove = node('button', 'barcode-multi-remove', '사진 삭제');
+        for (const button of [capture, pick, recrop, remove]) button.type = 'button';
+        const cameraInput = node('input', ''); cameraInput.type = 'file'; cameraInput.accept = 'image/*'; cameraInput.setAttribute('capture', 'environment'); cameraInput.hidden = true;
+        const fileInput = node('input', ''); fileInput.type = 'file'; fileInput.accept = 'image/*'; fileInput.hidden = true;
+        actions.append(capture, pick, recrop, remove);
+        section.append(heading, preview, status, actions, cameraInput, fileInput);
+        grid.append(section);
+        const slot = { index, section, heading, image, empty, status, capture, pick, recrop, remove, cameraInput, fileInput, file: null, region: null, url: null };
+        function open(input) {
+          if (closed || reading || cropOwner || index >= count) return;
+          input.value = '';
+          input.launchRevision = revision;
+          input.click();
+        }
+        capture.addEventListener('click', () => open(cameraInput));
+        pick.addEventListener('click', () => open(fileInput));
+        recrop.addEventListener('click', () => {
+          if (!closed && !reading && !cropOwner && slot.file) selectFile(slot, { files: [slot.file], value: '', launchRevision: revision });
+        });
+        remove.addEventListener('click', () => {
+          if (closed || reading || cropOwner) return;
+          revision++; clearSlot(slot); errorText = ''; render();
+        });
+        for (const input of [cameraInput, fileInput]) input.addEventListener('change', () => selectFile(slot, input));
+        return slot;
+      });
+      const status = node('p', 'barcode-multi-status'); status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
+      const resetNote = node('p', 'barcode-multi-subhint'); resetNote.setAttribute('role', 'status'); resetNote.hidden = true;
+      const error = node('p', 'barcode-multi-error'); error.setAttribute('role', 'alert'); error.hidden = true;
+      const actions = node('div', 'barcode-multi-actions');
+      const cancel = node('button', 'button secondary', '취소'); cancel.type = 'button';
+      const submit = node('button', 'button primary', '합쳐서 읽기'); submit.type = 'button';
+      actions.append(cancel, submit);
+      dialog.append(title, hint, modes, node('p', 'barcode-multi-subhint', '사진을 고른 뒤 바코드 부분만 선택해 주세요.'), resetNote, grid, status, error, node('p', 'barcode-multi-private', '사진은 이 기기에서만 분석하며 업로드하지 않습니다.'), actions);
+
+      function clearSlot(slot) {
+        slot.image.removeAttribute('src');
+        if (slot.url) URL.revokeObjectURL(slot.url);
+        slot.url = slot.file = slot.region = null;
+        slot.cameraInput.value = slot.fileInput.value = '';
+      }
+
+      function finish(result, failure) {
+        if (closed) return;
+        closed = true; revision++;
+        // Only cancel the crop started by this live wizard. A stale completion
+        // never calls cancel, so it cannot close a newer caller's crop dialog.
+        if (cropOwner) { const owner = cropOwner; cropOwner = null; owner.cancelPreview?.(); global.BarcodeRegionPicker?.cancel?.(owner); }
+        slots.forEach(clearSlot);
+        document.removeEventListener('languagechange', translate);
+        if (dialog.open) dialog.close();
+        dialog.remove();
+        if (active?.finish === finish) active = null;
+        if (failure) reject(failure); else resolve(result);
+      }
+
+      function render() {
+        if (closed) return;
+        const busy = reading || Boolean(cropOwner);
+        grid.dataset.count = String(count);
+        modeInputs.forEach(input => { input.disabled = busy; input.checked = Number(input.value) === count; });
+        slots.forEach((slot, index) => {
+          slot.section.hidden = index >= count;
+          const headingSource = index === 0 ? '{number}번 · 왼쪽 시작' : index === count - 1 ? '{number}번 · 오른쪽 끝' : '{number}번 · 가운데';
+          slot.heading.textContent = t(headingSource, { number: index + 1 });
+          slot.image.alt = t('{number}번 바코드 사진', { number: index + 1 });
+          slot.image.hidden = !slot.file; slot.empty.hidden = Boolean(slot.file);
+          slot.status.textContent = slot.file ? t('바코드 부분 선택 완료') : '';
+          slot.capture.textContent = t(slot.file ? '다시 촬영' : '촬영');
+          slot.capture.disabled = slot.pick.disabled = busy;
+          slot.recrop.hidden = !slot.file;
+          slot.recrop.disabled = busy || !slot.file;
+          slot.remove.disabled = busy || !slot.file;
+        });
+        const done = slots.slice(0, count).filter(slot => slot.file && slot.region).length;
+        submit.disabled = busy || done !== count;
+        status.textContent = reading ? t('사진 {count}장을 합쳐 바코드를 읽고 있습니다…', { count }) : cropOwner ? t('사진의 바코드 부분을 선택하고 있습니다…') : t('사진 {done}/{count}장 준비됨', { done, count });
+        error.hidden = !errorText;
+        error.textContent = global.I18n?.retranslate(errorText) || errorText;
+        resetNote.hidden = !photosReset;
+        resetNote.textContent = photosReset ? t('사진 수를 변경하여 기존 사진을 비웠습니다. 왼쪽부터 다시 촬영해 주세요.') : '';
+        dialog.setAttribute('aria-busy', reading ? 'true' : 'false');
+      }
+
+      function translate() { global.I18n?.refresh(dialog); render(); }
+
+      async function selectFile(slot, input) {
+        const file = input.files?.[0];
+        input.value = '';
+        if (!file || closed || reading || cropOwner || slot.index >= count || input.launchRevision !== revision) return;
+        const token = { revision: ++revision };
+        cropOwner = token; errorText = ''; photosReset = false; render();
+        try {
+          if (file.size > 30000000) throw new Error(t('30MB 이하의 카드 사진을 선택해 주세요.'));
+          if (!global.BarcodeRegionPicker?.choose) throw new Error(t('바코드 선택 도구를 불러오지 못했습니다. 화면을 새로 고친 뒤 다시 시도해 주세요.'));
+          const choice = await global.BarcodeRegionPicker.choose(file, { partial: true, owner: token });
+          if (closed || cropOwner !== token || revision !== token.revision || slot.index >= count) return;
+          if (choice) {
+            const thumbnail = await makePreview(file, choice.region, token);
+            if (closed || cropOwner !== token || revision !== token.revision || slot.index >= count) return;
+            const url = URL.createObjectURL(thumbnail);
+            clearSlot(slot);
+            slot.file = file; slot.region = [...choice.region]; slot.url = url; slot.image.src = url;
+          }
+        } catch (failure) {
+          if (!closed && cropOwner === token && revision === token.revision) errorText = failure?.message || t('사진을 열 수 없습니다. JPG 또는 PNG 파일을 선택해 주세요.');
+        } finally {
+          if (!closed && cropOwner === token) { cropOwner = null; render(); }
+        }
+      }
+
+      submit.addEventListener('click', async () => {
+        if (closed || reading || cropOwner || slots.slice(0, count).some(slot => !slot.file || !slot.region)) return;
+        reading = true; errorText = ''; const token = ++revision; render();
+        const parts = slots.slice(0, count).map(slot => ({ file: slot.file, region: [...slot.region] }));
+        try {
+          // Let the busy label paint before a CPU-intensive reader starts.
+          await new Promise(next => global.setTimeout(next, 0));
+          if (closed || revision !== token) return;
+          const result = await read(parts);
+          if (closed || revision !== token) return;
+          if (result == null) throw new Error(t('바코드를 읽지 못했습니다. 사진의 순서와 겹치는 부분을 확인하고 다시 시도해 주세요.'));
+          finish(result);
+        } catch (failure) {
+          if (!closed && revision === token) errorText = failure?.message || t('바코드를 읽지 못했습니다. 사진의 순서와 겹치는 부분을 확인하고 다시 시도해 주세요.');
+        } finally {
+          if (!closed && revision === token) { reading = false; render(); }
+        }
+      });
+      cancel.addEventListener('click', () => finish(null));
+      dialog.addEventListener('cancel', event => { event.preventDefault(); finish(null); });
+      dialog.addEventListener('close', () => finish(null));
+      active = { finish };
+      document.body.append(dialog);
+      document.addEventListener('languagechange', translate);
+      render();
+      try { dialog.showModal(); }
+      catch { finish(null, new Error(t('사진 촬영 화면을 열 수 없습니다. 브라우저를 업데이트한 뒤 다시 시도해 주세요.'))); }
+    });
+  }
+  global.BarcodeMultiPhoto = Object.freeze({ captureAndRead });
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
   <script>/* Offline image and camera scanning. Requires vendor/zxing-browser-0.1.5.min.js. */
 (function (global) {
   'use strict';
@@ -2581,14 +3351,14 @@ self.onmessage = async function(event) {
     return reader;
   }
 
-  function crop(source, region, maxSide, threshold, rotation = 0) {
+  function crop(source, region, maxSide, threshold, rotation = 0, maxPixels = 8000000) {
     const sourceWidth = source.videoWidth || source.naturalWidth || source.width;
     const sourceHeight = source.videoHeight || source.naturalHeight || source.height;
     const [rx, ry, rw, rh] = region;
     const width = sourceWidth * rw;
     const height = sourceHeight * rh;
     // Bound transient memory on phones while keeping the long edge detailed.
-    const scale = Math.min(1, maxSide / Math.max(width, height), Math.sqrt(8000000 / (width * height)));
+    const scale = Math.min(1, maxSide / Math.max(width, height), Math.sqrt(maxPixels / (width * height)));
     const border = 24;
     const canvas = document.createElement('canvas');
     const drawnWidth = Math.max(1, Math.round(width * scale));
@@ -2664,8 +3434,25 @@ self.onmessage = async function(event) {
     }
   }
 
+  function selectedRegion(region) {
+    const selected = region || [0, 0, 1, 1];
+    if (!Array.isArray(selected) || selected.length !== 4 || !selected.every(Number.isFinite) ||
+        selected[0] < 0 || selected[1] < 0 || selected[2] <= 0 || selected[3] <= 0 ||
+        selected[0] + selected[2] > 1.000001 || selected[1] + selected[3] > 1.000001) {
+      throw new Error(t('바코드 영역을 다시 선택해 주세요.'));
+    }
+    return selected;
+  }
+
   /** Returns every distinct decoded value; an empty array means no readable code. */
   async function scanImage(file, options = {}) {
+    const selected = selectedRegion(options.region);
+    // Keep original source pixels until the selected barcode region is cropped.
+    // Reducing a whole 24/48MP photo first can erase its narrowest bars.
+    const withinSelection = ([x, y, w, h]) => [
+      selected[0] + selected[2] * x, selected[1] + selected[3] * y,
+      selected[2] * w, selected[3] * h
+    ];
     const z = library();
     const image = await loadImage(file);
     const qr = new z.BrowserQRCodeReader();
@@ -2676,7 +3463,7 @@ self.onmessage = async function(event) {
       found.set(item.format + ':' + item.text, item);
     };
     const attempt = (reader, region, maxSide, threshold, rotation = 0) => {
-      try { add(readRegion(reader, image, region, maxSide, threshold, rotation)); } catch (_) { /* Try another region. */ }
+      try { add(readRegion(reader, image, withinSelection(region), maxSide, threshold, rotation)); } catch (_) { /* Try another region. */ }
     };
 
     // The C++ reader is fast enough to correct shallow tilt before falling back
@@ -2685,7 +3472,7 @@ self.onmessage = async function(event) {
       try {
         for (const orientation of [0, 90]) {
           for (const angle of deskewAngles) {
-            const results = await readStrong(image, [0, 0, 1, 1], 5000, orientation + angle);
+            const results = await readStrong(image, selected, 5000, orientation + angle);
             for (const item of results) if (item.format === 'CODE_128') found.set(item.format + ':' + item.text, item);
             if (found.size) break;
           }
@@ -2736,6 +3523,39 @@ self.onmessage = async function(event) {
       await new Promise(resolve => setTimeout(resolve, 0));
     }
     return [...found.values()];
+  }
+
+  /** Reconstruct only a visually aligned barcode strip; never infer field text. */
+  async function scanParts(parts) {
+    if (!Array.isArray(parts) || parts.length < 2 || parts.length > 3) throw new Error(t('같은 바코드를 왼쪽부터 2~3장 촬영해 주세요.'));
+    const images = [];
+    for (const part of parts) {
+      const region = selectedRegion(part?.region);
+      const source = await loadImage(part?.file);
+      const canvas = crop(source, region, 3600, 0, 0, 2000000);
+      // Partial photos must not gain artificial quiet zones at their cut edges.
+      try { images.push(canvas.getContext('2d', { willReadFrequently: true }).getImageData(24, 24, canvas.width - 48, canvas.height - 48)); }
+      finally { canvas.width = canvas.height = 1; source.src = ''; }
+      await new Promise(resolve => setTimeout(resolve, 0));
+    }
+    let merged;
+    try { merged = await global.BarcodeStitch.combine(images); }
+    catch (error) {
+      if (['CROP_TOO_TALL', 'NO_BAR_PATTERN'].includes(error.code)) throw new Error(t('각 사진에서 주변 글자를 제외하고 가늘고 긴 바코드 부분만 다시 선택해 주세요.'));
+      throw new Error(t('겹치는 부분을 정확히 맞추지 못했습니다. 같은 거리에서 30~40% 겹치게 다시 촬영해 주세요.'));
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = merged.width; canvas.height = merged.height;
+    try {
+      const context = canvas.getContext('2d', { willReadFrequently: true });
+      const pixels = context.createImageData(merged.width, merged.height);
+      pixels.data.set(merged.data); context.putImageData(pixels, 0, 0);
+      if (strongAvailable()) {
+        try { const results = await global.LotStrongDecoder.decode(canvas); if (results.length) return results; }
+        catch (_) { /* Keep the offline JS fallback available. */ }
+      }
+      try { return [output(code128Reader().decodeFromCanvas(canvas))]; } catch (_) { return []; }
+    } finally { canvas.width = canvas.height = 1; }
   }
 
   /** Starts camera capture. Callback receives {text, format}; call returned stop(). */
@@ -2864,7 +3684,7 @@ self.onmessage = async function(event) {
     };
   }
 
-  global.LotScanner = Object.freeze({ scanImage, start });
+  global.LotScanner = Object.freeze({ scanImage, scanParts, start });
 })(window);
 </script>
   <script>(function (root, factory) {
@@ -4561,6 +5381,7 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
   let cameraControls;
   let cameraSession = 0;
   let cardPhotoBusy = false;
+  let failedBarcodePhoto = null;
   let toastTimer;
   let resolutionTarget = null;
   let resolutionSaving = false;
@@ -4654,6 +5475,10 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
     $('barcodeInput').disabled = !qrReady;
     $('applyBarcode').disabled = !qrReady;
     $('nativeBarcodeButton').disabled = !qrReady || cardPhotoBusy;
+    $('multiBarcodeButton').disabled = !qrReady || cardPhotoBusy;
+    if (failedBarcodePhoto?.revision !== entryRevision) failedBarcodePhoto = null;
+    $('retryPhotoRegionButton').hidden = !failedBarcodePhoto;
+    $('retryPhotoRegionButton').disabled = !qrReady || cardPhotoBusy;
     $('barcodeInput').placeholder = qrReady ? t('두 번째 · 하단의 긴 바코드를 스캔하세요') : t('먼저 가운데 QR을 스캔해 주세요');
     $('qrStatus').textContent = qrReady ? t('로트 카드 인식 완료') : state.lot || $('qrInput').value ? t('입력 확인 필요') : t('스캔 대기');
     $('qrStatus').classList.toggle('matched', qrReady);
@@ -5102,15 +5927,17 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
   });
 
   $('photoButton').addEventListener('click', () => $('photoInput').click());
-  async function readCardPhoto(input, { barcodeOnly = false } = {}) {
-    const file = input.files[0];
+  async function readCardPhoto(input, { barcodeOnly = false, retryPhoto = null } = {}) {
+    const file = retryPhoto?.file || input.files[0];
     if (!file || cardPhotoBusy) return;
+    if (retryPhoto && retryPhoto.revision !== entryRevision) return;
     if (barcodeOnly && !scanIsCurrent('lot')) {
       notice('scanMessage', t('먼저 첫 번째 입력란에서 가운데 QR 코드를 인식해 주세요.'), 'error');
       input.value = ''; return;
     }
-    const photoRevision = entryRevision;
-    const scannedAt = new Date().toISOString();
+    const photoRevision = retryPhoto?.revision ?? entryRevision;
+    const scannedAt = retryPhoto?.scannedAt || new Date().toISOString();
+    if (!retryPhoto) failedBarcodePhoto = null;
     cardPhotoBusy = true;
     $('photoButton').disabled = true;
     $('cameraButton').disabled = true;
@@ -5119,7 +5946,14 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
     notice('scanMessage', t(barcodeOnly ? '촬영한 사진에서 하단 바코드를 읽고 있습니다…' : '카드 사진에서 바코드와 QR을 읽고 있습니다…'));
     try {
       if (file.size > 30000000) throw new Error(t('30MB 이하의 카드 사진을 선택해 주세요.'));
-      const results = await window.LotScanner.scanImage(file, barcodeOnly ? { mode: 'barcode' } : {});
+      let region;
+      if (retryPhoto) {
+        const selection = await window.BarcodeRegionPicker.choose(file);
+        if (!selection) { notice('scanMessage', t('영역 선택을 취소했습니다. 기존 입력은 유지됩니다.')); return; }
+        if (entryRevision !== photoRevision) return;
+        region = selection.region;
+      }
+      const results = await window.LotScanner.scanImage(file, barcodeOnly ? { mode: 'barcode', region } : {});
       if (entryRevision !== photoRevision) {
         notice('scanMessage', t('사진을 읽는 동안 입력이 변경되어 사진 결과를 적용하지 않았습니다. 필요한 카드를 다시 선택해 주세요.'));
         return;
@@ -5128,8 +5962,12 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
       const barcode = parsed.find((p) => p.type === 'barcode');
       if (barcodeOnly) {
         // Native capture supplements the current lot; it never replaces a card or its defect photos.
-        if (!barcode) throw new Error(t('하단 바코드를 읽지 못했습니다. 바코드 양 끝과 흰 여백이 모두 보이도록 가로로 선명하게 다시 촬영해 주세요.'));
+        if (!barcode) {
+          failedBarcodePhoto = { file, revision: photoRevision, scannedAt };
+          throw new Error(t('하단 바코드를 읽지 못했습니다. 사진에서 바코드 영역을 선택해 다시 읽어 주세요.'));
+        }
         if (state.barcode?.raw && barcode.value.raw !== state.barcode.raw) throw new Error(t('기존 바코드와 다른 값입니다. 현재 입력은 유지했습니다. 같은 카드인지 확인해 주세요.'));
+        failedBarcodePhoto = null;
         applyParsed(barcode, scannedAt);
         return;
       }
@@ -5154,6 +5992,39 @@ window.I18n.addMessages({"개인정보처리방침":{"en":"Privacy policy","zh-T
   }
   $('photoInput').addEventListener('change', () => readCardPhoto($('photoInput')));
   $('barcodeCaptureInput').addEventListener('change', () => readCardPhoto($('barcodeCaptureInput'), { barcodeOnly: true }));
+  $('retryPhotoRegionButton').addEventListener('click', () => {
+    if (failedBarcodePhoto) readCardPhoto($('barcodeCaptureInput'), { barcodeOnly: true, retryPhoto: failedBarcodePhoto });
+  });
+  $('multiBarcodeButton').addEventListener('click', async () => {
+    if (cardPhotoBusy || !scanIsCurrent('lot')) return;
+    endCamera();
+    $('cameraDialog').close();
+    const revision = entryRevision;
+    const scannedAt = new Date().toISOString();
+    cardPhotoBusy = true;
+    $('photoButton').disabled = $('cameraButton').disabled = true;
+    updateSaveButton(); updateCameraGuide();
+    try {
+      const parsed = await window.BarcodeMultiPhoto.captureAndRead({ read: async photos => {
+        const results = await window.LotScanner.scanParts(photos);
+        if (entryRevision !== revision) throw new Error(t('사진을 읽는 동안 입력이 변경되어 사진 결과를 적용하지 않았습니다. 필요한 카드를 다시 선택해 주세요.'));
+        const decoded = results.flatMap(result => { try { const value = C.parseScan(result.text); return value.type === 'barcode' ? [value] : []; } catch (_) { return []; } });
+        if (decoded.length !== 1) throw new Error(t('합친 사진에서 유효한 하단 바코드를 읽지 못했습니다. 사진의 순서와 겹치는 부분을 확인해 주세요.'));
+        const candidate = decoded[0];
+        if (state.barcode?.raw && candidate.value.raw !== state.barcode.raw) throw new Error(t('기존 바코드와 다른 값입니다. 현재 입력은 유지했습니다. 같은 카드인지 확인해 주세요.'));
+        // A partial-photo join must agree with the scanned card's order. Do not
+        // offer the manual mismatch override for an automatically joined strip.
+        if (state.lot?.lotCardNo.slice(0, -5) !== candidate.value.planOrder) throw new Error(t('합친 바코드의 계획 오더가 QR 카드 번호와 일치하지 않습니다. 같은 카드의 사진인지 확인해 주세요.'));
+        return candidate;
+      } });
+      if (parsed && entryRevision === revision) { failedBarcodePhoto = null; applyParsed(parsed, scannedAt); }
+    } catch (error) { notice('scanMessage', error.message, 'error'); }
+    finally {
+      cardPhotoBusy = false;
+      $('photoButton').disabled = $('cameraButton').disabled = false;
+      updateSaveButton(); updateCameraGuide();
+    }
+  });
   function captureBarcodePhoto() {
     if (cardPhotoBusy || !scanIsCurrent('lot')) return;
     // Keep stop/close/click synchronous so iOS retains the user's camera-picker gesture.
